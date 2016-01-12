@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title></title>
+<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.11.3/jquery.js"></script>
+</head>
+<body>
+<br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+<br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+<br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+<br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+<br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+<br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+<br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+<br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+<br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+<br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+<style>/*4.12 返回顶部*/
+.toTop{display:none;position:fixed;bottom:10px;right:20px; z-index:999;font-size:16px;cursor: pointer;overflow:hidden;visibility:visible; background-color:#fff;border: 1px solid #d9d9d9;color: #9c9c9c;font-size: 16px;width: 38px;height: 38px;line-height: 38px;text-align: center; text-decoration:none;_position:absolute;_top:expression(documentElement.scrollTop + documentElement.clientHeight-this.offsetHeight);}
+.toTop:hover{ color:#fff; text-decoration:none; background-color:#999}
+</style>
+<script type="text/javascript">
+var $backToTopEle=$('<a href="javascript:void(0)" class="toTop" title="返回顶部" style="display:none">TOP</a>').appendTo($("body")).click(function(){
+	$("html, body").animate({ scrollTop: 0 }, 120);
+});
+var $backToTopFun = function() {
+	var st = $(document).scrollTop(), winh = $(window).height();
+	(st > 0)? $backToTopEle.show(): $backToTopEle.hide();
+	/*IE6下的定位*/
+	if(!window.XMLHttpRequest){$backToTopEle.css("top", st + winh - 166);}
+};
+$(function(){
+$(function(){$(window).on("scroll",$backToTopFun);$backToTopFun();});
+});
+</script>
+
+</body>
+</html>

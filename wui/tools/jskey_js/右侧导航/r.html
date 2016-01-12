@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>右侧导航效果</title>
+<script src="http://libs.baidu.com/jquery/1.4.2/jquery.min.js"></script>
+<style type="text/css">
+.r_nav{width:40px;position:fixed;right:0;top:88px;_position:absolute;text-align:left;cursor:pointer;background-image:url(about:blank);}
+.r_nav a{background:#fafafa;color:#39A4DC;width:30px;overflow:hidden;right:-1px;height:30px;line-height:30px;margin-top:1px;display:block;cursor:pointer;position:relative;padding-right:10px;}
+.r_nav a:hover{background:#39A4DC;color:#ffffff;text-decoration:none;}
+
+.r_nav a em{background:#39A4DC;color:#ffffff;display:block;float:left;width:30px;font-size:16px;text-align:center;margin-right:10px;text-decoration:none;}
+.r_nav a:hover em{background:#00b700;}
+
+.r_nav a.new em{background:#ff6600;color:#ffffff;}
+.r_nav a.new:hover em{background:#00b700;color:#ffffff;}
+</style>
+<script type="text/javascript">
+function loadRightNav(z, w){
+	z.css("width",(w + 40) + "px");
+	z.find("a").each(function(){$(this).css("right","-"+(w+10)+"px").css("width",(w+30)+"px");});
+	var tx;
+	z.hover(function(){
+		tx=setTimeout(function(){z.find("a").each(function(i){var ta=$(this);setTimeout(function(){ta.animate({right:"0"},300);},50*i);});},300);
+	},function(){
+		if(tx){clearTimeout(tx);}z.find("a").each(function(i){var ta=$(this);setTimeout(function(){ta.animate({right:"-"+(w+10)},300,function(){});},50*i);});
+	});
+}
+$(function(){
+	loadRightNav($(".r_nav"), 100);
+});
+</script>
+</head>
+<body>
+<div class="r_nav">
+	<a href="#top"><em>^</em>回到顶部</a>
+	<a href="#v1"><em>1</em>右侧导航1</a>
+	<a href="#v2"><em>2</em>右侧导航2</a>
+	<a class="new" href="#v3"><em>3</em>右侧导航3</a>
+	<a class="new" href="#v4"><em>4</em>右侧导航4</a>
+	<a href="#v5"><em>5</em>右侧导航5</a>
+	<a href="#v6"><em>6</em>右侧导航6</a>
+	<a href="#v7"><em>7</em>右侧导航7</a>
+	<a href="#v8"><em>8</em>右侧导航8</a>
+	<a href="#v9"><em>9</em>右侧导航9</a>
+	<a href="#v10"><em>10</em>右侧导航10</a>
+</div>
+</body>
+</html>

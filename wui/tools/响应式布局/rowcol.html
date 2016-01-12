@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>row-col</title>
+<link rel="stylesheet" type="text/css" href="../reset.css" />
+<link rel="stylesheet" type="text/css" href="../html.css" />
+<style type="text/css">
+.row-demo .row { margin-top: 10px }
+.row-demo [class^="col-"], .row-demo [class*=" col-"]
+{
+	border: solid 1px #ddd;
+	padding: 5px 0;
+	text-align: center;
+	background-color: #f7f7f9;
+}
+</style>
+</head>
+<body>
+<div style="margin:30px auto;text-align:center;">
+<pre style="margin-left:30px;text-align:left;">
+响应式布局（栅格系统由行（row）和列（col）共同组成）
+	每一行row，包括12个col，以下的*号值【0-12，row宽会分为12等分，1-12分别占12分之N，0则代表不显示】
+	col-* 默认尺寸
+	引用时，col-*在第一位，其余按从小屏到大屏引用
+	当想以下几种屏幕显示不同效果时，才编写以下样式，想达到某屏时才显示隐藏某列，可以引用-0
+	/* 超小屏幕（手机，小于 320px） */
+	col-xs-*
+	/* 小屏幕（平板，大于等于 768px） */
+	col-sm-*
+	/* 中等屏幕（桌面显示器，大于等于 992px） */
+	col-md-*
+	/* 大屏幕（大桌面显示器，大于等于 1200px） */
+	col-lg-*
+</pre>
+<div class="row-demo">
+	<br /><br />
+	<p>此行展示不同屏幕尺寸下的显示隐藏效果</p>
+	<div class="row cl">
+		<div class="col-1 col-xs-0 col-sm-1 col-md-1 col-lg-2">1/12 01</div><!--像"col-sm-1 col-md-1"和col-1一样，可省略-->
+		<div class="col-1 col-xs-0 col-sm-0          col-lg-0">1/12 02</div>
+		<div class="col-1 col-xs-3 col-sm-2          col-lg-0">1/12 03</div>
+		<div class="col-1 col-xs-0 col-sm-0                  ">1/12 04</div>
+		<div class="col-1 col-xs-0 col-sm-0 col-md-0 col-lg-2">1/12 05</div>
+		<div class="col-1 col-xs-3 col-sm-3 col-md-2 col-lg-0">1/12 06</div>
+		<div class="col-1 col-xs-0 col-sm-0 col-md-0 col-lg-3">1/12 07</div>
+		<div class="col-1 col-xs-0 col-sm-0 col-md-0         ">1/12 08</div>
+		<div class="col-1 col-xs-3 col-sm-3 col-md-2         ">1/12 09</div>
+		<div class="col-1 col-xs-0 col-sm-0 col-md-0         ">1/12 10</div>
+		<div class="col-1 col-xs-0 col-sm-0 col-md-2 col-lg-0">1/12 11</div>
+		<div class="col-1 col-xs-3 col-sm-3 col-md-2         ">1/12 12</div>
+	</div>
+	<br /><br />
+	<div class="row cl">
+		<div class="col-2">2/12(1/6)</div>
+		<div class="col-4">4/12(1/3)</div>
+		<div class="col-6">6/12(1/2)</div>
+	</div>
+	<div class="row cl">
+		<div class="col-3">3/12(1/4)</div>
+		<div class="col-9">9/12(3/4)</div>
+	</div>
+	<div class="row cl">
+		<div class="col-6">6/12(1/2)</div>
+		<div class="col-6">6/12(1/2)</div>
+	</div>
+	<div class="row cl">
+		<div class="col-12">12/12(1)</div>
+	</div>
+</div>
+        
+        
+<div class="row-demo responsive">
+	<div class="row cl">
+		<div class="col-1">1/12</div>
+		<div class="col-1">1/12</div>
+		<div class="col-1">1/12</div>
+		<div class="col-1">1/12</div>
+		<div class="col-1">1/12</div>
+		<div class="col-1">1/12</div>
+		<div class="col-1">1/12</div>
+		<div class="col-1">1/12</div>
+		<div class="col-1">1/12</div>
+		<div class="col-1">1/12</div>
+		<div class="col-1">1/12</div>
+		<div class="col-1">1/12</div>
+	</div>
+	<div class="row cl">
+		<div class="col-2">2/12(1/6)</div>
+		<div class="col-4">4/12(1/3)</div>
+		<div class="col-6">6/12(1/2)</div>
+	</div>
+	<div class="row cl">
+		<div class="col-3">3/12(1/4)</div>
+		<div class="col-9">9/12(3/4)</div>
+	</div>
+	<div class="row cl">
+		<div class="col-6">6/12(1/2)</div>
+		<div class="col-6">6/12(1/2)</div>
+	</div>
+	<div class="row cl">
+		<div class="col-12">12/12(1)</div>
+	</div>
+</div>
+
+
+
+
+
+
+</div>
+</body>
+</html>

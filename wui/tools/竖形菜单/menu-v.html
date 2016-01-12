@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title></title>
+<!--link rel="stylesheet" href="../reset.css" /-->
+<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.11.3/jquery.js"></script>
+<style>
+html,body{*position:static;}
+html{font-family:sans-serif;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;}
+ul,li{margin:0;padding:0;}
+ul{list-style-type:none;}
+body{font-family:"Microsoft Yahei","Hiragino Sans GB","Helvetica Neue",Helvetica,tahoma,arial,Verdana,sans-serif,"\5B8B\4F53";font-size:12px;color:#333;-webkit-font-smoothing:antialiased;-moz-font-smoothing:antialiased;}
+body{line-height:1.6;}
+
+a{outline:none;text-decoration:none;cursor:pointer;}
+a:link,a:visited,a:active{color:#0066cc;outline:none;}
+a:hover{outline:none;color:#0066cc;text-decoration:underline;}
+a:focus{outline:none;}
+a:hover,a:active{outline:none;}:focus{outline:none;}
+
+/*以上如果引用了reset.css和html.css就不需要了*/
+
+
+.menu-v{display:inline-block;min-width:120px;background-color:#fff;border:solid 1px #e0e0e0;}
+.menu-v i{font-style:normal;font-weight:normal;}
+.menu-v > li{position:relative;}
+.menu-v > li > a{display:block;clear:both;border-bottom:solid 1px #f2f2f2;padding:6px 10px;text-align:left;line-height:1.5;font-weight:normal;white-space:nowrap;}
+.menu-v > li > a:hover,.menu-v > li.hover > a{text-decoration:none;background-color:#fafafa;}
+.menu-v > li .arrow{position:absolute;top:50%;margin-top:-10px;right:5px;line-height:20px;height:20px;}
+.menu-v > li > .menu-v{display:none;position:absolute;left:100%;top:-1px;}
+.menu-v > li.hover > .menu-v{display:block;}
+
+</style>
+</head>
+<body>
+<ul class="menu-v">
+	<li> <a href="javascript:;">一级菜单</a></li>
+	<li> <a href="javascript:;">一级菜单<i class="arrow">&gt;</i></a>
+		<ul class="menu-v">
+			<li><a href="javascript:;">二级菜单<i class="arrow">&gt;</i></a>
+				<ul class="menu-v">
+					<li><a href="javascript:;">三级菜单</a></li>
+					<li><a href="javascript:;">三级菜单</a></li>
+					<li><a href="javascript:;">三级菜单</a></li>
+				</ul>
+			</li>
+			<li><a href="javascript:;">二级菜单</a></li>
+		</ul>
+	</li>
+</ul>
+</body>
+<script>
+$(document).on("mouseenter","ul.menu-v li",function(){
+	$(this).addClass("hover");
+});
+$(document).on("mouseleave","ul.menu-v li",function(){
+	$(this).removeClass("hover");
+});
+</script>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>纯css3特效Example</title>
+<link rel="stylesheet" type="text/css" href="duang.css" />
+</head>
+<body>
+<div style="margin:100px auto;text-align:center;">
+	<span class="duang-flip" onmouseout="this.className='';" onmouseover="this.className='duang-ring';">纯css3特效Example，鼠标放上来看看</span>
+</div>
+</body>
+</html>
+
+
+
+以下所有代码只是为了方便演示效果增加的代码，完全可以不要<br />
+<style>input[type="button"]{margin:5px 0 0 5px;}</style>
+<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.11.3/jquery.js"></script>
+<div>
+  <input class="duang" type="button" value="淡入" data-duang="duang-fadein"/>
+  <input class="duang" type="button" value="淡入-从上" data-duang="duang-fadeinT"/>
+  <input class="duang" type="button" value="淡入-从右" data-duang="duang-fadeinR"/>
+  <input class="duang" type="button" value="淡入-从下" data-duang="duang-fadeinB"/>
+  <input class="duang" type="button" value="淡入-从左" data-duang="duang-fadeinL"/>
+  <input class="duang" type="button" value="淡出" data-duang="duang-fadeout"/>
+  <input class="duang" type="button" value="淡出-向上" data-duang="duang-fadeoutT"/>
+  <input class="duang" type="button" value="淡出-向右" data-duang="duang-fadeoutR"/>
+  <input class="duang" type="button" value="淡出-向下" data-duang="duang-fadeoutB"/>
+  <input class="duang" type="button" value="淡出-向左" data-duang="duang-fadeoutL"/>
+  <input class="duang" type="button" value="弹跳" data-duang="duang-bounce"/>
+  <input class="duang" type="button" value="弹入" data-duang="duang-bouncein"/>
+  <input class="duang" type="button" value="弹入-从上" data-duang="duang-bounceinT"/>
+  <input class="duang" type="button" value="弹入-从右" data-duang="duang-bounceinR"/>
+  <input class="duang" type="button" value="弹入-从下" data-duang="duang-bounceinB"/>
+  <input class="duang" type="button" value="弹入-从左" data-duang="duang-bounceinL"/>
+  <input class="duang" type="button" value="弹出" data-duang="duang-bounceout"/>
+  <input class="duang" type="button" value="弹出-向上" data-duang="duang-bounceoutT"/>
+  <input class="duang" type="button" value="弹出-向右" data-duang="duang-bounceoutR"/>
+  <input class="duang" type="button" value="弹出-向下" data-duang="duang-bounceoutB"/>
+  <input class="duang" type="button" value="弹出-向左" data-duang="duang-bounceoutL"/>
+  <input class="duang" type="button" value="转入" data-duang="duang-rotatein"/>
+  <input class="duang" type="button" value="转入-从左上" data-duang="duang-rotateinLT"/>
+  <input class="duang" type="button" value="转入-从左下" data-duang="duang-rotateinLB"/>
+  <input class="duang" type="button" value="转入-从右上" data-duang="duang-rotateinRT"/>
+  <input class="duang" type="button" value="转入-从右下" data-duang="duang-rotateinRB"/>
+  <input class="duang" type="button" value="转出" data-duang="duang-rotateout"/>
+  <input class="duang" type="button" value="转出-向左上" data-duang="duang-rotateoutLT"/>
+  <input class="duang" type="button" value="转出-向左下" data-duang="duang-rotateoutLB"/>
+  <input class="duang" type="button" value="转出-向右上" data-duang="duang-rotateoutRT"/>
+  <input class="duang" type="button" value="转出-向右下" data-duang="duang-rotateoutRB"/>
+  <input class="duang" type="button" value="翻转" data-duang="duang-flip"/>
+  <input class="duang" type="button" value="翻入-X轴" data-duang="duang-flipinX"/>
+  <input class="duang" type="button" value="翻入-Y轴" data-duang="duang-flipinY"/>
+  <input class="duang" type="button" value="翻出-X轴" data-duang="duang-flipoutX"/>
+  <input class="duang" type="button" value="翻出-Y轴" data-duang="duang-flipoutY"/>
+  <input class="duang" type="button" value="闪烁" data-duang="duang-flash"/>
+  <input class="duang" type="button" value="震颤" data-duang="duang-shake"/>
+  <input class="duang" type="button" value="摇摆" data-duang="duang-swing"/>
+  <input class="duang" type="button" value="摇晃" data-duang="duang-wobble"/>
+  <input class="duang" type="button" value="震铃" data-duang="duang-ring"/>
+</div>
+<br /><br /><br /><br />
+<div style="margin:0 auto;text-align:center;"><button id="text" class="duang-wobble" type="button">测试效果</button></div>
+   
+<script type="text/javascript">
+	$('.duang').on('click',function(){
+		var tra=$(this).attr('data-duang');
+		$('#text').text(tra);
+		$('#text').removeClass();
+	 	$('#text').addClass(tra);
+	})
+	$('#text').on({
+		'animationend':function(){
+			$('#text').removeClass();
+		},
+		'webkitAnimationEnd':function(){
+			$('#text').removeClass();
+		},
+	})
+</script>

@@ -1,0 +1,122 @@
+@font-face {
+	font-family: 'dsworkfont';
+	src:url('fonts/dsworkfont.eot?vav88l');
+	src:url('fonts/dsworkfont.eot?vav88l#iefix') format('embedded-opentype'),
+		url('fonts/dsworkfont.ttf?vav88l') format('truetype'),
+		url('fonts/dsworkfont.woff?vav88l') format('woff'),
+		url('fonts/dsworkfont.svg?vav88l#dsworkfont') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+i {
+	font-family: 'dsworkfont';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.icon-uF0001:before {
+	content: "\f0001";
+}
+.icon-uF0002:before {
+	content: "\f0002";
+}
+.icon-uF0003:before {
+	content: "\f0003";
+}
+.icon-uF0004:before {
+	content: "\f0004";
+}
+.icon-uF0005:before {
+	content: "\f0005";
+}
+.icon-uF0006:before {
+	content: "\f0006";
+}
+.icon-uF0007:before {
+	content: "\f0007";
+}
+.icon-uF0008:before {
+	content: "\f0008";
+}
+.icon-uF0009:before {
+	content: "\f0009";
+}
+.icon-uF0010:before {
+	content: "\f0010";
+}
+.icon-uF0011:before {
+	content: "\f0011";
+}
+.icon-uF0012:before {
+	content: "\f0012";
+}
+.icon-uF0013:before {
+	content: "\f0013";
+}
+.icon-uF0014:before {
+	content: "\f0014";
+}
+.icon-uF0015:before {
+	content: "\f0015";
+}
+.icon-uF0016:before {
+	content: "\f0016";
+}
+.icon-uF0017:before {
+	content: "\f0017";
+}
+.icon-uF0018:before {
+	content: "\f0018";
+}
+.icon-uF0019:before {
+	content: "\f0019";
+}
+.icon-uF0020:before {
+	content: "\f0020";
+}
+.icon-uF0021:before {
+	content: "\f0021";
+}
+.icon-uF0022:before {
+	content: "\f0022";
+}
+.icon-uF0023:before {
+	content: "\f0023";
+}
+.icon-uF0024:before {
+	content: "\f0024";
+}
+.icon-uF0025:before {
+	content: "\f0025";
+}
+.icon-uF0026:before {
+	content: "\f0026";
+}
+.icon-uF0027:before {
+	content: "\f0027";
+}
+.icon-uF0028:before {
+	content: "\f0028";
+}
+.icon-uF0029:before {
+	content: "\f0029";
+}
+.icon-uF0030:before {
+	content: "\f0030";
+}
+.icon-uF0031:before {
+	content: "\f0031";
+}
+.icon-uF0032:before {
+	content: "\f0032";
+}
+
