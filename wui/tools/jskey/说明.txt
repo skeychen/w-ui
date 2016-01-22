@@ -1,0 +1,2 @@
+jskey_fanyi.js简繁转换
+jskey_nav_right.js右侧导航
