@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>fullPage.js</title>
+<!--[if IE]><script type="text/javascript">var console = {log:function(){}};</script><![endif]-->
+
+<script src="http://apps.bdimg.com/libs/jquery/1.11.3/jquery.min.js"></script>
+
+<link rel="stylesheet" type="text/css" href="./fullpage/jquery.fullpage.min.css" />
+<!-- 当css3设置为false时，还需要除"linear", "swing" or "easeInOutCubic"外的效果，则需要引入此js -->
+<!--<script src="./fullpage/jquery.easings.min.js"></script>-->
+<!-- This following line is only necessary in the case of using the plugin option `scrollOverflow:true` -->
+<script src="./fullpage/jquery.slimscroll.min.js"></script>
+
+<!--[if gt IE 6]> <!-->
+<!--><![endif]-->
+
+<script type="text/javascript" src="./fullpage/jquery.fullpage.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	function init(){
+	
+	$("#fullpage").fullpage({
+	//Navigation
+		menu:'#menu'// 绑定菜单，设定的相关属性与 anchors 的值对应后，菜单可以控制滚动
+		,lockAnchors:true// false，是否锁定不更改地址中的 锚，true则锁定不更改
+		,anchors:["firstPage", "m2page", "m3page", "m4page", "lastPage"]//定义锚链接
+		
+		,navigation:true// false，是否显示项目导航
+		//,navigationPosition:'right'// right，项目导航的位置，可选 left 或 right
+		
+		//,navigationTooltips:['我是第1个', '我是第2个', '我是第3个', '我是第4个', '我是第5个']// 项目导航的 tip
+		//,showActiveTooltip:false// false，是否直接显示navigationTooltips设置的值
+		
+		,slidesNavigation:true// false，是否显示左右滑块的项目导航
+		//,slidesNavPosition:'bottom'// bottom，左右滑块的项目导航的位置，可选 top 或 bottom
+
+	//Scrolling
+		//,scrollingSpeed:700// 700，滚动速度，单位为毫秒
+		,autoScrolling:true// true，是否使用插件的滚动方式，如果选择 false则会出现浏览器自带的滚动条，相当于全部section坚排在一起
+		,fitToSection:true
+		//,fitToSectionDelay:1000
+		//,scrollBar:false// 是否显示滚动条
+		
+		
+		,css3:true// false，设置为true时使用easingcss3，否则使用easing
+		//,easing:'easeInOutCubic'// 滚动动画方式
+		,easingcss3:'cubic-bezier(0.175, 0.885, 0.320, 1.275)'// 'ease'
+		
+		
+		//,loopBottom:false// false，滚动到最底部后是否滚回顶部
+		//,loopTop:false// false，滚动到最顶部后是否滚底部
+		,continuousVertical:true// false，顶部和底部是否无缝切换，和loopBottom、loopTop属性设置可能会冲突
+		
+		//,loopHorizontal:false// 左右滑块是否循环滑动，controlArrows为false时无需要设置
+		
+		//,normalScrollElements:'#element1, .element2'
+		
+		,scrollOverflow:true// false，内容超过满屏后是否显示滚动条//设置为true时，需要jquery.slimscroll.min.js支持，ie6-7不兼容
+		
+		//,touchSensitivity:15// 接触灵敏度
+		//,normalScrollElementTouchThreshold:5// 正常滚动元件接触阈值
+
+	//Accessibility
+		//,keyboardScrolling:true// true，是否使用键盘方向键导航
+		//,animateAnchor:true
+		//,recordHistory:true
+
+	//Design
+		,controlArrows:true// true，左右切换的三角按钮是否出现，为true时loopHorizontal可设置是否可循环滑动
+		//,verticalCentered:true// true，内容是否垂直居中
+		
+		,resize :true// false，字体是否随着窗口缩放而缩放
+		,sectionsColor :["#1bbc9b", "#4BBFC3", "#7BAABE", "#C63D0F", "#323539"]//设置背景颜色
+		//,paddingTop:'70px'// 0，与顶部的距离当出现header或footer时，就需要设置，当不兼容ie6
+		//,paddingBottom:'70px'// 0，与底部距离
+		//,fixedElements:'#header, .footer'
+		//,responsiveWidth:0
+		//,responsiveHeight:0
+
+	//Custom selectors
+		//,sectionSelector:'.section'
+		//,slideSelector:'.slide'
+
+	//events
+		// 滚动前的回调函数，接收 index、nextIndex 和 direction 3个参数：
+		//    index 是离开的“页面”的序号，从1开始计算；
+		//    nextIndex 是滚动到的“页面”的序号，从1开始计算；
+		//    direction 判断往上滚动还是往下滚动，值是 up 或 down。
+		,onLeave:function(index, nextIndex, direction){
+			if (index == 3 && direction == "down"){
+				//$(".section").eq(index -1).removeClass("moveDown").addClass("moveUp");
+			}
+			else if(index == 3 && direction == "up"){
+				//$(".section").eq(index -1).removeClass("moveUp").addClass("moveDown");
+			}
+		}
+		// 滚动到某一屏后的回调函数，接收 anchorLink 和 index 两个参数，anchorLink 是锚链接的名称，index 是序号，从1开始计算
+		,afterLoad:function(anchorLink, index){
+			if(index == 2){//section 2
+				$("#section2").find("img").delay(300).animate({left:"0%"}, 1000, "easeInOutCubic");
+				$("#section2").find("p").first().fadeIn(1800, function(){$("#section2").find("p").last().fadeIn(1800);});;
+			}
+			if(anchorLink == "m3page"){//section 3
+				$("#section3").find(".intro").animate({left:"0%"}, 500, "easeInOutCubic");
+			}
+		}
+		// 页面结构生成后的回调函数，或者说页面初始化完成后的回调函数
+		,afterRender:function(){}
+		,afterResize:function(){}
+		// 滚动到某一水平滑块后的回调函数，与 afterLoad 类似，接收 anchorLink、index、slideIndex、direction 4个参数
+		,afterSlideLoad:function(anchorLink, index, slideAnchor, slideIndex){}
+		// 某一水平滑块滚动前的回调函数，与 onLeave 类似，接收 anchorLink、index、slideIndex、direction 4个参数
+		,onSlideLeave:function(anchorLink, index, slideIndex, direction, nextSlideIndex){}
+	});
+	
+	}
+	
+	$('#moveSectionUp').click(function(e){e.preventDefault();$.fn.fullpage.moveSectionUp();});
+	$('#moveSectionDown').click(function(e){e.preventDefault();$.fn.fullpage.moveSectionDown();});
+	$('#moveTo').click(function(e){e.preventDefault();$.fn.fullpage.moveTo(4, 3);});
+	$('#silentMoveTo').click(function(e){e.preventDefault();$.fn.fullpage.silentMoveTo(4);});
+	$('#silentMoveToSlide').click(function(e){e.preventDefault();$.fn.fullpage.silentMoveTo(4, 3);});
+	$('#moveSlideRight').click(function(e){e.preventDefault();$.fn.fullpage.moveSlideRight();});
+	$('#moveSlideLeft').click(function(e){e.preventDefault();$.fn.fullpage.moveSlideLeft();});
+	$('#setAutoScrollingFalse').click(function(e){e.preventDefault();$.fn.fullpage.setAutoScrolling(false);});
+	$('#setAutoScrollingTrue').click(function(e){e.preventDefault();$.fn.fullpage.setAutoScrolling(true);});
+	$('#setKeyboardScrollingFalse').click(function(e){e.preventDefault();$.fn.fullpage.setKeyboardScrolling(false);});
+	$('#setKeyboardScrollingTrue').click(function(e){e.preventDefault();$.fn.fullpage.setKeyboardScrolling(true);});
+	$('#setScrollingSpeed1500').click(function(e){e.preventDefault();$.fn.fullpage.setScrollingSpeed(2500);});
+	$('#setScrollingSpeed700').click(function(e){e.preventDefault();$.fn.fullpage.setScrollingSpeed(700);});
+	$('#destroy').click(function(e){e.preventDefault();$.fn.fullpage.destroy('all');});
+	$('#undestroy').click(function(e){e.preventDefault();init();});
+	$('#reBuild').click(function(e){e.preventDefault();$.fn.fullpage.reBuild();});
+	$('#setLockAnchorsTrue').click(function(e){e.preventDefault;$.fn.fullpage.setLockAnchors(true);});
+	$('#setLockAnchorsFalse').click(function(e){e.preventDefault;$.fn.fullpage.setLockAnchors(false);});
+	
+	init();
+});
+/*
+moveSectionUp()	向上滚动
+moveSectionDown()	向下滚动
+moveTo(section, slide)	滚动到
+moveSlideRight()	slide 向右滚动
+moveSlideLeft()	slide 向左滚动
+setAutoScrolling()	设置页面滚动方式，设置为 true 时自动滚动
+setAllowScrolling()	添加或删除鼠标滚轮/触控板控制
+setKeyboardScrolling()	添加或删除键盘方向键控制
+setScrollingSpeed()	定义以毫秒为单位的滚动速度
+*/
+
+</script>
+
+<style>
+body{font-family:arial,helvetica;color:#333;color:rgba(0,0,0,0.5);overflow:hidden;}
+h1{font-size:6em;}
+p{font-size:2em;}
+.intro p{width:50%;margin:0 auto;font-size:1.5em;}
+.section{text-align:center;}
+#section2 img{left:130%;position:relative;border:0;}
+#section2 p{display:none;}
+#section3 .intro{left:-130%;position:relative;}
+#section3 .intro p{line-height:2em;}
+
+#menu{position:absolute;top:0;left:0;height:40px;z-index:70;width:100%;padding:0;margin:0;}
+#menu li{display:inline-block;margin:10px;color:#000;background:#fff;background:rgba(255,255,255, 0.5);-webkit-border-radius:10px;border-radius:10px;}
+#menu li.active{background:#666;background:rgba(0,0,0, 0.5);color:#fff;}
+#menu li a{text-decoration:none;color:#000;}
+#menu li.active a:hover{color:#000;}
+#menu li:hover{background:rgba(255,255,255, 0.8);}
+#menu li a,
+#menu li.active a{padding:9px 18px;display:block;}
+#menu li.active a{color:#fff;}
+
+#actions{position:absolute;top:73px;left:30px;z-index:99999;}
+#actions a{background:#000;padding:7px;margin:2px;color:#ccc;display:inline-block;}
+#actions a:hover{color:#fff;background:#81A140;}
+
+#myVideo{position:absolute;right:0;bottom:0;top:0;right:0;width:100%;height:100%;
+	background-size:100% 100%;background-color:black;background-image:;background-position:center center;background-size:contain;object-fit:cover;z-index:3;
+}
+
+
+#header, #footer{position:fixed;height:50px;display:block;width:100%;background:#333;z-index:9;text-align:center;color:#f2f2f2;padding:20px 0 0 0;}
+#header{top:0px;}
+#footer{bottom:0px;}
+</style>
+</head>
+<body>
+<!--<div id="header">Header</div>-->
+<!--<div id="footer">Footer</div>-->
+
+<!--[if gt IE 7]> <!-->
+<ul id="menu">
+	<li data-menuanchor="firstPage"><a href="#firstPage">First slide</a></li>
+	<li data-menuanchor="m2page"><a href="#m2page">Second slide</a></li>
+	<li data-menuanchor="m3page"><a href="#m3page">Third slide</a></li>
+	<li data-menuanchor="m4page"><a href="#m4page">Four slide</a></li>
+	<li data-menuanchor="lastPage"><a href="#lastPage">Last slide</a></li>
+</ul>
+<div id="actions">
+	<a id="moveSectionUp" href="#">moveSectionUp</a>
+	<a id="moveSectionDown" href="#">moveSectionDown</a>
+	<a id="silentMoveTo" href="#">silentMoveTo(4)</a>
+	<a id="moveTo" href="#">moveTo(4,3)</a>
+	<a id="silentMoveToSlide" href="#">silentMoveTo(4,3)</a>
+	<a id="moveSlideRight" href="#">moveSlideRight</a>
+	<a id="moveSlideLeft" href="#">moveSlideLeft</a>
+	<a id="setAutoScrollingTrue" href="#">setAutoScrolling(true)</a>
+	<a id="setAutoScrollingFalse" href="#">setAutoScrolling(false)</a>
+	<a id="setKeyboardScrollingTrue" href="#">setKeyboardScrolling(true)</a>
+	<a id="setKeyboardScrollingFalse" href="#">setKeyboardScrolling(false)</a>
+	<a id="setScrollingSpeed1500" href="#">setScrollingSpeed(1500)</a>
+	<a id="setScrollingSpeed700" href="#">setScrollingSpeed(700)</a>
+	<a id="destroy" href="#">destroy('all')</a>
+	<a id="undestroy" href="#">undestroy</a>
+	<a id="reBuild" href="#">reBuild</a>
+	<a id="setLockAnchorsTrue" href="#">setLockAnchors(true)</a>
+	<a id="setLockAnchorsFalse" href="#">setLockAnchors(false)</a>
+</div>
+<!--><![endif]-->
+
+<div id="fullpage">
+	<div class="section" id="section1">
+		<h1>fullPage.js</h1>
+	</div>
+	<div class="section" id="section2">
+		<div class="intro">
+			<img src="imgs/fullPage.png" alt="fullPage" />
+			<h1>Section 2</h1>
+			<p>Configure the easing jQuery UI effect!</p>
+			<p>You can see more about them <a href="http://jqueryui.com/resources/demos/effect/easing.html" target="_blank">here</a></p>
+		</div>
+	</div>
+	<div class="section" id="section3">
+		<div class="intro">
+			<h1>Section 3</h1>
+			<p>
+			0<br />1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />
+			0<br />1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />
+			0<br />1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />
+			</p>
+		</div>
+	</div>
+	<div class="section" id="section4">
+		<div class="slide" style="background-image:url(imgs/bg1.jpg);">
+			<h1>Section 4</h1>
+			<h2>Slide 4.1</h2>
+		</div>
+	    <div class="slide" style="background-image:url(imgs/bg2.jpg);"><h1>Slide 4.2</h1></div>
+	    <div class="slide" style="background-image:url(imgs/bg3.jpg);"><h1>Slide 4.3</h1></div>
+	    <div class="slide" style="background-image:url(imgs/bg4.jpg);"><h1>Slide 4.4</h1></div>
+	</div>
+	<div class="section" id="section5" style="background-image:url(imgs/bg5.jpg);">
+		<h1>Cool uh?</h1>
+		<!--[if gt IE 7]> <!--><audio autoplay controls="">
+			<source src="imgs/horse.ogg" type="audio/ogg">
+			<source src="imgs/horse.mp3" type="audio/mpeg">
+			Your browser does not support the audio element.
+		</audio><!--><![endif]-->
+	</div>
+	<div class="section" id="section6">
+		<!-- 视频长宽比会影响下一屏，建议使用视频时，像支付宝登录页般纵向只有一页 -->
+		<!--[if gt IE 8]> <!--><video autoplay loop muted id="myVideo">
+			<source src="https://github.com/alvarotrigo/fullPage.js/blob/master/examples/imgs/flowers.mp4?raw=true" type="video/mp4">
+			<source src="https://github.com/alvarotrigo/fullPage.js/blob/master/examples/imgs/flowers.webm?raw=true" type="video/webm">
+		</video><!--><![endif]-->
+	</div>
+</div>
+
+
+</body>
+</html>
