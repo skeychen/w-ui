@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0,minimal-ui"/>
+<title>jskey_focus_图片切换</title>
+<script type='text/javascript' src='../../jquery/jquery.js'></script>
+<script type='text/javascript' src='../../jskey/jskey_focus.js'></script>
+<style type="text/css">
+.focusbox{width:100%;height:200px;overflow:hidden;margin:0 auto;padding:0;}
+.focusbox img{border:0;width:auto;height:200px;}
+</style>
+<script type="text/javascript">
+$(function() {
+	$jskey.focus({target:"showid",mode:"fit",arrow:true,button:true});
+});
+</script>
+</head>
+
+<body>
+	<div id="showid" class="focusbox">
+		<div class="jskey_focus">
+			<ul>
+				<li><a href="#" target="_blank"><img src="jskey_focus/01.jpg"/></a></li>
+				<li><a href="#" target="_blank"><img src="jskey_focus/02.jpg"/></a></li>
+				<li><a href="#" target="_blank"><img src="jskey_focus/03.jpg"/></a></li>
+				<li><a href="#" target="_blank"><img src="jskey_focus/04.jpg"/></a></li>
+			</ul>
+		</div>
+	</div>
+</body>
+</html>
