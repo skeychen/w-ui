@@ -2,17 +2,26 @@ var $jskey = $jskey || {};
 
 
 
-$jskey.$=function(id){return document.getElementById(id);};
-$jskey.$byTagName=function(name){return document.getElementsByTagName(name);};
-$jskey.$replace=function(str,t,u){str=str+"";var i=str.indexOf(t);var r="";while(i !=-1){r+=str.substring(0,i)+u;str=str.substring(i+t.length,str.length);i=str.indexOf(t);}r=r+str;return r;};
-$jskey.$link=function(path){var k=document.createElement("link");k.rel="stylesheet";k.type="text/css";k.href=path;document.getElementsByTagName("head")[0].appendChild(k);k=null;};
-$jskey.$src = $jskey.$replace($jskey.$byTagName("script")[$jskey.$byTagName("script").length - 1].src + "", "\\", "/");
-$jskey.$path = $jskey.$src.substring(0, $jskey.$src.lastIndexOf("/") + 1);
-try{if($jskey.$path.length>7 && $jskey.$path.substring($jskey.$path.length-7)!="/jskey/"){$jskey.$path="/web/js/jskey/";}}catch(e){}
+document.write(
+	"<style type='text/css'>" + 
+		".jskey_focus{width:inherit;height:inherit;overflow:hidden;position:relative;margin:0 auto;padding:0;}" +
+		".jskey_focus ul," +
+		".jskey_focus li{list-style:none;margin:0;padding:0;}" +
+		".jskey_focus ul{height:100%;position:absolute;list-style-type:none;}" +
+		".jskey_focus ul li{float:left;height:100%;overflow:hidden;position:relative;background:#000;}" +
+		".jskey_focus ul li div{position:absolute;overflow:hidden;}" +
+		".jskey_focus .prevnext{width:40px;height:40px;position:absolute;top:40%;cursor:pointer;}" +
+		".jskey_focus .prev{left:0;}" +
+		".jskey_focus .next{right:0;}" +
+		".jskey_focus .btnbg{position:absolute;width:100%;height:20px;left:0;bottom:0;background:#000;}" +
+		".jskey_focus .btn{position:absolute;width:100%;height:10px;padding:5px 10px;right:0;bottom:0;text-align:right;}" +
+		".jskey_focus .btn span{display:inline-block;_display:inline;_zoom:1;width:25px;height:10px;margin-bottom:5px;_font-size:0;margin-left:5px;cursor:pointer;background:#eee;}" +
+		".jskey_focus .btn span.on{background:#fff;}" +
+	"</style>"
+);
 
 
 
-$jskey.$link($jskey.$path + "themes/focus/focus.css");
 $jskey.focus = function(o){
 	var obj = o.target;
 	if(typeof o.target == "string"){obj = $("#" + o.target);}
@@ -60,9 +69,9 @@ $jskey.focus = function(o){
 	}
 	if(o.button){
 		//以下代码添加数字按钮和按钮后的半透明条，还有上一页、下一页两个按钮
-		box.append("<div class='prevnext prev'></div><div class='prevnext next'></div>");
+		box.append("<div class='prevnext prev'>&lt;</div><div class='prevnext next'>&gt;</div>");
 		//上下页透明度处理
-		box.find(".prevnext").css("opacity",0.2).css("top", parseInt((box.height()-74)/2) + "px").hover(
+		box.find(".prevnext").css("opacity",0.2).css("top", parseInt((box.height()-40)/2) + "px").hover(
 			function(){$(this).stop(true,false).animate({"opacity":"0.8"},300);},
 			function(){$(this).stop(true,false).animate({"opacity":"0.2"},300);}
 		);
