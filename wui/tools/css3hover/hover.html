@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0,minimal-ui"/>
+<title>jskey_focus_图片切换</title>
+<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.11.3/jquery.js"></script>
+<link href="css/iconfont/iconfont.css" rel="stylesheet" type="text/css" />
+<style type="text/css">body{margin:0;padding:0}</style>
+</head>
+
+<body>
+<style type="text/css">
+.duang-flipin,.duang-flipinY{-webkit-animation:1s ease-out backwards;-moz-animation:1s ease-out backwards;-ms-animation:1s ease-out backwards;animation:1s ease-out backwards}
+
+.duang-flipin,.duang-flipinY{-webkit-animation-name:flipinY;-moz-animation-name:flipinY;-ms-animation-name:flipinY;animation-name:flipinY}
+@-webkit-keyframes flipinY{
+    0%{-webkit-transform:perspective(400px) rotateY(90deg);opacity:0}
+    40%{-webkit-transform:perspective(400px) rotateY(-10deg)}
+    70%{-webkit-transform:perspective(400px) rotateY(10deg)}
+    100%{-webkit-transform:perspective(400px) rotateY(0);opacity:1}
+}
+@-moz-keyframes flipinY{
+    0%{-moz-transform:perspective(400px) rotateY(90deg);opacity:0}
+    40%{-moz-transform:perspective(400px) rotateY(-10deg)}
+    70%{-moz-transform:perspective(400px) rotateY(10deg)}
+    100%{-moz-transform:perspective(400px) rotateY(0);opacity:1}
+}
+@-ms-keyframes flipinY{
+    0%{-ms-transform:perspective(400px) rotateY(90deg);opacity:0}
+    40%{-ms-transform:perspective(400px) rotateY(-10deg)}
+    70%{-ms-transform:perspective(400px) rotateY(10deg)}
+    100%{-ms-transform:perspective(400px) rotateY(0);opacity:1}
+}
+@keyframes flipinY{
+    0%{transform:perspective(400px) rotateY(90deg);opacity:0}
+    40%{transform:perspective(400px) rotateY(-10deg)}
+    70%{transform:perspective(400px) rotateY(10deg)}
+    100%{transform:perspective(400px) rotateY(0);opacity:1}
+}
+.czxy {position:relative;width:100%;height:497px;overflow:hidden;text-align:center;}
+.czxy .kbox {position:relative;margin:250px auto 0 auto;width:970px;height:175px;overflow:hidden;}
+.czxy .kbox div{position:absolute;width:140px;height:140px;border:1px solid #fff;opacity:0.9;border-radius:70px;background-color:#fff;overflow:hidden;}
+.czxy .kbox div div.mm i{display:block;margin-top:25px;font-size:55px;line-height:60px;opacity:1;color:#fff;}
+.czxy .kbox div div.mm b{display:block;margin-top:5px;font-size:20px;line-height:20px;opacity:1;color:#fff;}
+.czxy .kbox div img{opacity:1;}
+</style>
+
+<div class="czxy">
+<img style="height:497px;position:absolute;top:0;left:0;" src="czxy.jpg" />
+<div class="kbox">
+	<div style="top:0;left:0;"><div class="mm" style="background-color:#3300ff;"><i class="iconfont">&#xf0039;</i><b>吃在广州</b></div><img style="display:none;" src="c1.jpg" /></div>
+	<div style="top:30px;left:160px;"><div class="mm" style="background-color:#e961bc;"><i class="iconfont">&#xf0135;</i><b>住在广州</b></div><img style="display:none;" src="c2.jpg" /></div>
+	<div style="top:0;left:320px;"><div class="mm" style="background-color:#08cb97;"><i class="iconfont">&#xf0178;</i><b>购物广州</b></div><img style="display:none;" src="c3.jpg" /></div>
+	<div style="top:30px;left:480px;"><div class="mm" style="background-color:#bc4f09;"><i class="iconfont">&#xf027f;</i><b>行走广州</b></div><img style="display:none;" src="c4.jpg" /></div>
+	<div style="top:0;left:640px;"><div class="mm" style="background-color:#cf7513;"><i class="iconfont">&#xf003d;</i><b>游遍广州</b></div><img style="display:none;" src="c5.jpg" /></div>
+	<div style="top:30px;left:800px;"><div class="mm" style="background-color:#99cccc;"><i class="iconfont">&#xf00aa;</i><b>娱乐观者</b></div><img style="display:none;" src="c6.jpg" /></div>
+</div>
+</div>
+<script type="text/javascript">
+$(function(){
+$(".czxy .kbox div").each(function(index){
+	var x = $(this).find(".mm");
+	var y = $(this).find("img");
+	$(this).hover(
+		function(){y.addClass("duang-flipin").show(0);x.removeClass("duang-flipin").delay(500).hide(0);}
+		,
+		function(){x.addClass("duang-flipin").show(0);y.removeClass("duang-flipin").delay(500).hide(0);}
+	);
+});
+});
+</script>
+
+</body>
+</html>
