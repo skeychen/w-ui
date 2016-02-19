@@ -63,7 +63,7 @@ $(function(){
 
 <br /><br />
 <hr />
-<h3>示例2</h3>
+<h3>示例2,复杂的组合用法</h3>
 <style>
 /*自定义控件样式示例*/
 /*对导航菜单设置*/
@@ -98,52 +98,90 @@ $(function(){
 </style>
 <script type="text/javascript">
 $(function(){
-	$("#v2").navtool({height:50,bgColor:"#1C72BE",bgColorHover:"#15539C",bgColorMenu:"#15539C"});// 字体颜色需要使用css进行设置
+	$("#v21").navtool({height:50,bgColor:"#1C72BE",bgColorHover:"#15539C",bgColorMenu:"#15539C"});// 字体颜色需要使用css进行设置
+	$("#v22").navtool({height:50,bgColor:"#1C72BE",bgColorHover:"#15539C",bgColorMenu:"#15539C"});// 字体颜色需要使用css进行设置
+	$("#v23").navtool({height:50,bgColor:"#1C72BE",bgColorHover:"#15539C",bgColorMenu:"#15539C"});// 字体颜色需要使用css进行设置
 });
 </script>
-<div style="width:800px;height:50px;margin:0 auto;">
-<div id="v2" class="nav-tool nav-my">
-	<div class="nav-up">
-		<ul>
-			<li class="nav-up-selected"><a href="#">首页</a></li>
-			<li data-nav="product"><a href="#">云产品</a></li>
-			<li><a href="#">行业解决方案</a></li>
-			<li data-nav="weixin"><a href="#">微信建站</a></li>
-			<li data-nav="support"><a href="#">帮助与支持</a></li>
-			<li><a href="#">合作伙伴</a></li>
-			<li><a>我只是锚</a></li>
-		</ul>
+<div style="width:100%;height:50px;background-color:#1C72BE;">
+	<div style="float:left;width:100px;">&nbsp;</div>
+	<div style="width:645px;height:50px;margin:0 auto;float:left;">
+		<div id="v21" class="nav-tool nav-my">
+			<div class="nav-up">
+				<ul>
+					<li class="nav-up-selected"><a href="#">首页</a></li>
+					<li data-nav="product"><a href="#">云产品</a></li>
+					<li><a href="#">行业解决方案</a></li>
+					<li data-nav="weixin"><a href="#">微信建站</a></li>
+					<li data-nav="support"><a href="#">帮助与支持</a></li>
+					<li><a href="#">合作伙伴</a></li>
+					<li><a>我只是锚</a></li>
+				</ul>
+			</div>
+			<div class="nav-down">
+				<div class="nav-down-menu" data-nav="product">
+					<dl><dt><a href="#">云服务</a></dt>
+						<dd><a href="#">云服务器</a></dd>
+						<dd><a>云数据库</a></dd>
+					</dl>
+					<dl><dt><a>开发者工具</a></dt>
+						<dd><a href="#">移动加速</a></dd>
+						<dd><a href="#">应用加固</a></dd>
+					</dl>
+					<dl><dt><a>开发者服务</a></dt>
+						<dd><a href="#">安全认证服务</a></dd>
+						<dd><a href="#">域名备案</a></dd>
+					</dl>
+				</div>
+				<div class="nav-down-menu" data-nav="weixin" style="width:180px;margin-left:262px;">
+					<dl><dd><a href="#">微信</a></dd></dl>
+					<dl><dd><a href="#">游戏</a></dd></dl>
+					<dl><dd><a>移动应用</a></dd></dl>
+				</div>
+				<div class="nav-down-menu" data-nav="support">
+					<dl><dd><a href="#">资料库</a></dd></dl>
+					<dl><dd><a href="#">论坛</a></dd></dl>
+					<dl><dd><a href="#">亿元扶持</a></dd></dl>
+					<dl><dd><a>负载均衡</a></dd></dl>
+				</div>
+			</div>
+		</div>
 	</div>
-	<div class="nav-down">
-		<div class="nav-down-menu" data-nav="product">
-			<dl><dt><a href="#">云服务</a></dt>
-				<dd><a href="#">云服务器</a></dd>
-				<dd><a>云数据库</a></dd>
-			</dl>
-			<dl><dt><a>开发者工具</a></dt>
-				<dd><a href="#">移动加速</a></dd>
-				<dd><a href="#">应用加固</a></dd>
-			</dl>
-			<dl><dt><a>开发者服务</a></dt>
-				<dd><a href="#">安全认证服务</a></dd>
-				<dd><a href="#">域名备案</a></dd>
-			</dl>
+	<div style="width:110px;height:50px;margin:0 auto;float:left;">
+		<div id="v22" class="nav-tool nav-my">
+			<div class="nav-up">
+				<ul>
+					<li data-nav="support"><a href="#">帮助与支持</a></li>
+				</ul>
+			</div>
+			<div class="nav-down" style="width:200px;">
+				<div class="nav-down-menu" data-nav="support">
+					<dl><dd><a href="#">资料库</a></dd></dl>
+					<dl><dd><a href="#">论坛</a></dd></dl>
+					<dl><dd><a href="#">亿元扶持</a></dd></dl>
+					<dl><dd><a>负载均衡</a></dd></dl>
+				</div>
+			</div>
 		</div>
-		<div class="nav-down-menu" data-nav="weixin">
-			<dl><dd><a href="#">微信</a></dd></dl>
-			<dl><dd><a href="#">游戏</a></dd></dl>
-			<dl><dd><a>移动应用</a></dd></dl>
-		</div>
-		<div class="nav-down-menu" data-nav="support">
-			<dl><dd><a href="#">资料库</a></dd></dl>
-			<dl><dd><a href="#">论坛</a></dd></dl>
-			<dl><dd><a href="#">亿元扶持</a></dd></dl>
-			<dl><dd><a>负载均衡</a></dd></dl>
+	</div>
+	<div style="width:100px;height:50px;margin:0 auto;float:left;">
+		<div id="v23" class="nav-tool nav-my">
+			<div class="nav-up">
+				<ul>
+					<li data-nav="xx"><a href="#">合作伙伴</a></li>
+				</ul>
+			</div>
+			<div class="nav-down" style="width:200px;">
+				<div class="nav-down-menu" data-nav="xx">
+					<dl><dd><a href="#">资料库</a></dd></dl>
+					<dl><dd><a href="#">论坛</a></dd></dl>
+					<dl><dd><a href="#">亿元扶持</a></dd></dl>
+					<dl><dd><a>负载均衡</a></dd></dl>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>
-</div>
-
 
 
 
