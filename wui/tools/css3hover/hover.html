@@ -15,35 +15,36 @@
 
 .duang-flipin,.duang-flipinY{-webkit-animation-name:flipinY;-moz-animation-name:flipinY;-ms-animation-name:flipinY;animation-name:flipinY}
 @-webkit-keyframes flipinY{
-    0%{-webkit-transform:perspective(400px) rotateY(90deg);opacity:0}
+    0%{-webkit-transform:perspective(400px) rotateY(90deg);opacity:1}
     40%{-webkit-transform:perspective(400px) rotateY(-10deg)}
     70%{-webkit-transform:perspective(400px) rotateY(10deg)}
     100%{-webkit-transform:perspective(400px) rotateY(0);opacity:1}
 }
 @-moz-keyframes flipinY{
-    0%{-moz-transform:perspective(400px) rotateY(90deg);opacity:0}
+    0%{-moz-transform:perspective(400px) rotateY(90deg);opacity:1}
     40%{-moz-transform:perspective(400px) rotateY(-10deg)}
     70%{-moz-transform:perspective(400px) rotateY(10deg)}
     100%{-moz-transform:perspective(400px) rotateY(0);opacity:1}
 }
 @-ms-keyframes flipinY{
-    0%{-ms-transform:perspective(400px) rotateY(90deg);opacity:0}
+    0%{-ms-transform:perspective(400px) rotateY(90deg);opacity:1}
     40%{-ms-transform:perspective(400px) rotateY(-10deg)}
     70%{-ms-transform:perspective(400px) rotateY(10deg)}
     100%{-ms-transform:perspective(400px) rotateY(0);opacity:1}
 }
 @keyframes flipinY{
-    0%{transform:perspective(400px) rotateY(90deg);opacity:0}
+    0%{transform:perspective(400px) rotateY(90deg);opacity:1}
     40%{transform:perspective(400px) rotateY(-10deg)}
     70%{transform:perspective(400px) rotateY(10deg)}
     100%{transform:perspective(400px) rotateY(0);opacity:1}
 }
 .czxy {position:relative;width:100%;height:497px;overflow:hidden;text-align:center;}
-.czxy .kbox {position:relative;margin:250px auto 0 auto;width:970px;height:175px;overflow:hidden;}
-.czxy .kbox div{position:absolute;width:140px;height:140px;border:1px solid #fff;opacity:0.9;border-radius:70px;background-color:#fff;overflow:hidden;}
+.czxy .kbox {position:relative;margin:250px auto 0 auto;width:970px;height:175px;overflow:hidden;background-color:transparent;}
+.czxy .kbox div{position:absolute;width:140px;height:140px;border:none;opacity:0.9;border-radius:50%;background-color:transparent;overflow:hidden;}
+.czxy .kbox div div.mm{position:relative;top:0;left:0;}
 .czxy .kbox div div.mm i{display:block;margin-top:25px;font-size:55px;line-height:60px;opacity:1;color:#fff;}
 .czxy .kbox div div.mm b{display:block;margin-top:5px;font-size:20px;line-height:20px;opacity:1;color:#fff;}
-.czxy .kbox div img{opacity:1;}
+.czxy .kbox div img{opacity:1;width:140px;height:140px;border-radius:50%;}
 </style>
 
 <div class="czxy">
@@ -63,9 +64,9 @@ $(".czxy .kbox div").each(function(index){
 	var x = $(this).find(".mm");
 	var y = $(this).find("img");
 	$(this).hover(
-		function(){y.addClass("duang-flipin").show(0);x.removeClass("duang-flipin").delay(500).hide(0);}
+		function(){x.removeClass("duang-flipin").hide(0);y.addClass("duang-flipin").show(0);}
 		,
-		function(){x.addClass("duang-flipin").show(0);y.removeClass("duang-flipin").delay(500).hide(0);}
+		function(){y.removeClass("duang-flipin").hide(0);x.addClass("duang-flipin").show(0);}
 	);
 });
 });
