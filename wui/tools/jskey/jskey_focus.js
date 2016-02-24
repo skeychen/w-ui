@@ -6,7 +6,7 @@ document.write(
 	"<style type='text/css'>" + 
 		".jskey_focus{width:100%;height:100%;overflow:hidden;position:relative;margin:0 auto;padding:0;}" +
 		".jskey_focus ul," +
-		".jskey_focus li{list-style-type:none;height:100%;list-style:none;margin:0;padding:0;position:absolute;}" +
+		".jskey_focus li{list-style-type:none;height:100%;list-style:none;margin:0;padding:0;position:absolute;text-align:center;}" +
 		".jskey_focus ul li{overflow:hidden;}" +
 		".jskey_focus ul li img{border:none;}" +
 		".jskey_focus ul li div{position:absolute;overflow:hidden;}" +
