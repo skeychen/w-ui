@@ -7,7 +7,7 @@ document.write(
 		".jskey_focus{width:100%;height:100%;overflow:hidden;position:relative;margin:0 auto;padding:0;}" +
 		".jskey_focus ul," +
 		".jskey_focus li{list-style-type:none;height:100%;list-style:none;margin:0;padding:0;position:absolute;}" +
-		".jskey_focus ul li{overflow:hidden;background:#000;}" +
+		".jskey_focus ul li{overflow:hidden;}" +
 		".jskey_focus ul li img{border:none;}" +
 		".jskey_focus ul li div{position:absolute;overflow:hidden;}" +
 		".jskey_focus .prevnext{width:40px;height:40px;line-height:40px;position:absolute;cursor:pointer;font-size:32px;text-align:center;color:#fff;background:#000;border-radius:20px;font-family:'\\5B8B\\4F53';font-weight:bold;}" +
@@ -77,14 +77,14 @@ $jskey.focus = function(o){
 		box.find(".next").click(function(){index+=1;if(index==len){index=0;}    playbox();});//下一页按钮
 	}
 
-	function x(){
-		_w = $(window).width();
+	function x(w){
+		_w = w;
 		box.find("ul").css("width",_w * len);//ul的总宽度
 		box.find("ul li").css("width", _w).css("top", "0").css("height", box.height()).each(function(index){
 			$(this).css("left", (_w * index) + "px");
 		});
-		playbox()
+		playbox();
 	}
-	x();
-	if(o.mode == "fit"){$(window).resize(function(){x();});}
+	x(_w);
+	if(o.mode == "fit"){$(window).resize(function(){x($(window).width());});}
 };
