@@ -13,7 +13,6 @@ h1,h2,h3,h4,h5,h6{font-size:100%;}
 a,area{outline:none;blr:expression(this.onFocus=this.blur());}
 a{text-decoration:none;cursor:pointer;}
 a:hover{text-decoration:underline;outline:none;}
-a.ie6:hover{zoom:1;}
 a:focus{outline:none;}
 a:hover,a:active{outline:none;}:focus{outline:none;}
 sub,sup{vertical-align:baseline;}
