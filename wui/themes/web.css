@@ -1,0 +1,31 @@
+html,body{width:100%;height:100%;border:0;padding:0;margin:0;}
+body,a,button,div,fieldset,input,label,legend,option,p,select,span,tr,td,textarea
+{font-size:14px;line-height:14px;font-family:"Microsoft Yahei", "\u5FAE\u8F6F\u96C5\u9ED1", "\5B8B\4F53", Arial, STHeiti, Tahoma, Helvetica;}
+body {background-color:#ffffff;}
+div,img,span,dl,dt,dd {padding:0;margin:0;}
+img {border:0;}
+div.left {float:left;}
+div.right {float:right;}
+
+.ds {display:block;border:none;padding:0;margin:0;
+	width:100%;height:45px;
+	text-align:center;
+	color:#ffffff;
+}
+.ds a, .a{text-decoration:none;height:45px;line-height:45px;margin:0 5px;}
+.ds a:link{color:#ffffff;}
+.ds a:visited{color:#ffffff;}
+.ds a:hover{color:#0000ff;}/*#2aa8e2;*/
+.ds a:active{color:#ffffff;}
+
+.ds_top {position:fixed;left:0;top:0;overflow:hidden;background-color:#4CB0E1;/*#1e1d27;*/}
+.ds_bottom {position:fixed;left:0;bottom:0;overflow:hidden;}
+
+.ds_copyright {color:#0C5AD1;font-size:12px;background-color:#ffffff;padding:20px 0;}
+.ds_copyright a{text-decoration:none;font-size:12px;}
+.ds_copyright a:link{color:#8f97a6;}
+.ds_copyright a:visited{color:#8f97a6;}
+.ds_copyright a:hover{color:#fff;}
+.ds_copyright a:active{color:#8f97a6;}
+
+div.line{display:block;width:100%;height:1px;margin:0;padding:0;overflow:hidden;background-color:#dddddd;}
