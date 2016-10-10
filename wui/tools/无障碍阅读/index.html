@@ -1,0 +1,786 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=8">
+<title></title>
+<script type="text/javascript" src="jquery.js"></script>
+<!--该版本只需要引入js，但工具栏默认是隐藏的，需要调用$('.wza').show();以显示出工具栏-->
+<script type="text/javascript" src="wza/wza.js"></script>
+</head>
+
+<body>
+
+<div style='position:fixed;left:0;top:0;'>
+<span id='wza_button'
+style="cursor:pointer;display:inline-block;width:132px;height:31px;overflow:hidden;clear:both;background:url(./wza/index_read_btn.png) no-repeat left center;"
+onclick="$('.wza').slideToggle(555);"></span>
+</div>
+
+
+<!-- ************************************************* -->
+<!-- ************************************************* -->
+<!-- ************************************************* -->
+<!-- 以下所有内容都是测试用的，可以删除 -->
+<!-- ************************************************* -->
+<!-- ************************************************* -->
+<!-- ************************************************* -->
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" type="text/css" href="http://www.gzly.gov.cn/themes/web.css"/>
+<link rel="stylesheet" type="text/css" href="http://www.gzly.gov.cn/themes/index.css"/>
+<br /><br /><br /><br />
+
+<input type="text" value="is input text"/>
+<input type="button" value="is input button"/>
+<button>is button</button>
+
+<div class="header">
+<embed width="1000" height="335" src="http://www.gzly.gov.cn/themes/web/banner.swf" type="application/x-shockwave-flash" quality="high" />
+</div>
+<div class="nav">
+    <ul class="left">
+        <li><a href="http://www.gzly.gov.cn/index.html">首页</a></li>
+        <li><a href="http://www.gzly.gov.cn/a/gkzn/index.html">信息公开</a></li>
+        <li><a href="http://www.gzly.gov.cn/a/gzdt2/index.html">工作动态</a></li>
+        <li><a href="http://www.gzly.gov.cn/a/tzgsgg/index.html">通知公告</a></li>
+        <li><a href="http://www.gzly.gov.cn/a/gkyjx/index.html">公众互动</a></li>
+        <li><a target="_blank" href="http://wsbs.gz.gov.cn/gz/index.jsp">办事大厅</a></li>
+        <li><a target="_blank" href="http://weibo.com/gzly">官方微博</a></li>
+        <li class="last"><a target="_blank" href="http://www.visitgz.com/">资讯网</a></li>
+    </ul>
+</div>
+
+
+
+
+
+<!--浮动二维码-->
+<!--
+<div class="floatPanel">
+	<div class="ctrolPanel">
+		<div class="titlePanel">
+			扫一扫
+			<span onclick="disnon()">×</span>
+		</div>
+		<a href="#"><img src="http://www.gzly.gov.cn/themes/images/gzlywx.png" /></a>
+		<a href="#"><img src="http://www.gzly.gov.cn/themes/images/gzlyapp.png" /></a>
+	</div>
+</div>
+<script type="text/javascript">
+function disnon(){
+	$(".floatPanel").css("display","none");
+}
+</script>
+-->
+
+<div class="imsg w990 clearfix">
+<div class="main left">
+  <div class="hotnews">
+	<div class="mid clear">
+		<dl>
+			<dt>新闻头条</dt>
+			<dd>
+			<div id="rollnews">
+			
+			
+				<div>
+					<a target="_blank" href="http://www.gzly.gov.cn/a/gzdt2/2143.html"><span>广州市旅游局局长刘瑜梅接待韩国首尔市观光体育局局长金意承一行</span></a>
+					<a target="_blank" title="详细" href="http://www.gzly.gov.cn/a/gzdt2/2143.html"><p>2016年9月30日下午，广州市旅游局局长刘瑜梅接待了韩国首尔市观光体育局局长金意承一行。会见中，双方认为在人口规模、城市地标（广州塔与首尔塔）等方面两市有着相同的共性和广阔的合作空间。并就两地客源接</p></a>
+				</div>
+			
+				<div>
+					<a target="_blank" href="http://www.gzly.gov.cn/a/gzdt2/2142.html"><span>强化安全检查确保国庆黄金周旅游安全</span></a>
+					<a target="_blank" title="详细" href="http://www.gzly.gov.cn/a/gzdt2/2142.html"><p>2016年9月27日下午，在我局党委书记、局长刘瑜梅同志带领下，我局办公室、旅行社管理处相关负责人一行4人对广州广之旅国际旅行社股份有限公司、广东南湖国际旅行社有限责任公司进行了国庆黄金周节前旅游安</p></a>
+				</div>
+			
+				<div>
+					<a target="_blank" href="http://www.gzly.gov.cn/a/gzdt2/2141.html"><span>王东检查国庆假期前广州旅游市场安全</span></a>
+					<a target="_blank" title="详细" href="http://www.gzly.gov.cn/a/gzdt2/2141.html"><p> 29日下午，王东副市长带领各相关部门负责人实地检查国庆假期前旅游安全工作，市旅游局局长刘瑜梅陪同检查。王东副市长对旅游安全工作提出四点要求： （一）要认清形势任务，高度重视旅游安全工作。各部门要充分</p></a>
+				</div>
+			
+			</div>
+			<script type="text/javascript">
+			$(function(){
+				var x = $("#rollnews");
+				var x_h = 84*3;// 这里的6是指你一共多少条新闻，一条高度是84px
+				x.html($.trim(x.html()) + $.trim(x.html()) + $.trim(x.html()));
+				var i = 1;
+				function MarqueeRollNews(){
+					var ll = parseInt(x.css("marginTop"));
+					ll--;
+					x.css("marginTop", ll + "px");
+				}
+				function MarqueeRollNewsOne(){
+					if(x_h + parseInt(x.css("marginTop")) <= 0){x.css("marginTop", "0px");}
+					var RollTwo;
+					RollTwo=setInterval(function(){
+						MarqueeRollNews();
+						var t = parseInt(x.css("marginTop"));
+						if(t%84 == 0){clearInterval(RollTwo);}
+					}, 15);
+				}
+				var RollOne=setInterval(MarqueeRollNewsOne, 5000);
+				x.on("mouseover", function() {clearInterval(RollOne);}); 
+				x.on("mouseout", function() {RollOne=setInterval(MarqueeRollNewsOne, 5000);});
+			});
+			</script>
+			</dd>
+		</dl>
+	</div>
+
+	<div class="mfoucs left clear">
+
+<div class="foucs">
+	<ul class="img">
+	
+		<li href="http://www.gzly.gov.cn//a/gzdt2/2143.html">
+			<img alt="广州市旅游局局长刘瑜梅接待韩国首尔市观光体育局局长金意承一行" src="http://www.gzly.gov.cn/f/img/201609/1475228184217.jpg"/><div></div><span>广州市旅游局局长刘瑜梅接待韩国首尔市观光体育局局长金意承一行</span>
+		</li>
+	
+		<li href="http://www.gzly.gov.cn//a/gzdt2/2142.html">
+			<img alt="强化安全检查确保国庆黄金周旅游安全" src="http://www.gzly.gov.cn/f/img/201609/1475220575061.jpg"/><div></div><span>强化安全检查确保国庆黄金周旅游安全</span>
+		</li>
+	
+		<li href="http://www.gzly.gov.cn//a/gzdt2/2141.html">
+			<img alt="王东检查国庆假期前广州旅游市场安全" src="http://www.gzly.gov.cn/f/img/201609/1475220412295.jpg"/><div></div><span>王东检查国庆假期前广州旅游市场安全</span>
+		</li>
+	
+		<li href="http://www.gzly.gov.cn//a/gzdt2/2140.html">
+			<img alt="何忠友副省长到广州检查国庆假期旅游安全工作" src="http://www.gzly.gov.cn/f/img/201609/1475228782795.jpg"/><div></div><span>何忠友副省长到广州检查国庆假期旅游安全工作</span>
+		</li>
+	
+	
+	</ul>
+	<ul class="menu">
+	
+		<li>
+			<img alt="广州市旅游局局长刘瑜梅接待韩国首尔市观光体育局局长金意承一行" src="http://www.gzly.gov.cn/f/img/201609/1475228184217.jpg"/>
+		</li>
+	
+		<li>
+			<img alt="强化安全检查确保国庆黄金周旅游安全" src="http://www.gzly.gov.cn/f/img/201609/1475220575061.jpg"/>
+		</li>
+	
+		<li>
+			<img alt="王东检查国庆假期前广州旅游市场安全" src="http://www.gzly.gov.cn/f/img/201609/1475220412295.jpg"/>
+		</li>
+	
+		<li>
+			<img alt="何忠友副省长到广州检查国庆假期旅游安全工作" src="http://www.gzly.gov.cn/f/img/201609/1475228782795.jpg"/>
+		</li>
+	
+	
+		
+	</ul>
+</div>
+<script type="text/javascript">
+;!function(){
+	var oFocus = $('.foucs');
+	var oList = oFocus.find('.img li');
+	var oMenu = oFocus.find('.menu li');
+	var index = 0, time =false;
+	oMenu.eq(0).addClass('on');
+	oFocus.hover(function(){
+		if(time){clearInterval(time);}
+	},function(){
+		paly();
+	});
+	oMenu.click(function(){
+		index = oMenu.index(this);
+		play();return false;
+	});
+	oList.click(function(){
+		window.open($(this).attr("href"));
+		return false;
+	});
+	function play(){
+		if(index>=oList.length) index = 0;
+		oList.stop(true).eq(index).show().fadeIn(300).siblings().hide();
+		oMenu.eq(index).addClass('on').siblings().removeClass('on');
+	};
+	function paly(){
+		play();
+		time = setInterval(function(){index ++;play();},3000)
+	}
+	paly();
+}();
+</script></div>
+
+	<div class="mlist">
+		
+		
+			<div class="listhot"><a target="_blank" href="http://www.gzly.gov.cn/a/gzdt2/2142.html" title="强化安全检查确保国庆黄金周旅游安全"><span>强化安全检查确保国庆黄金周旅游安全</span></a></div>
+		
+			<div class="listhot"><a target="_blank" href="http://www.gzly.gov.cn/a/gzdt2/2141.html" title="王东检查国庆假期前广州旅游市场安全"><span>王东检查国庆假期前广州旅游市场安全</span></a></div>
+		
+		<ul class="list">
+			
+			<li><a target="_blank" href="http://www.gzly.gov.cn/a/gzdt2/2140.html" title="何忠友副省长到广州检查国庆假期旅游安全工作"><span>2016-09-30</span>&raquo; 何忠友副省长到广州检查国庆假期旅游安全工作</a></li>
+			
+			<li><a target="_blank" href="http://www.gzly.gov.cn/a/gzdt2/2139.html" title="广州旅游集散中心(海珠站)开展节前安全应急演练"><span>2016-09-30</span>&raquo; 广州旅游集散中心(海珠站)开展节前安全应急演练</a></li>
+			
+			<li><a target="_blank" href="http://www.gzly.gov.cn/a/gzdt2/2137.html" title="广州市旅游局开展2016年国庆黄金周旅游市场检查周专项行动"><span>2016-09-29</span>&raquo; 广州市旅游局开展2016年国庆黄金周旅游市场检查周专项行动</a></li>
+			
+			<li><a target="_blank" href="http://www.gzly.gov.cn/a/gzdt2/2147.html" title="广东省旅游局曾颖如局长调研广州邮轮旅游发展并进行黄金周景区安全检查"><span>2016-09-29</span>&raquo; 广东省旅游局曾颖如局长调研广州邮轮旅游发展并进行黄金周景区安全检查</a></li>
+			
+			<li><a target="_blank" href="http://www.gzly.gov.cn/a/gzdt2/2116.html" title="市旅游局顺利举办从化片区旅游行业讲解员培训暨优秀讲解员选拔活动"><span>2016-09-29</span>&raquo; 市旅游局顺利举办从化片区旅游行业讲解员培训暨优秀讲解员选拔活动</a></li>
+			
+			<li><a target="_blank" href="http://www.gzly.gov.cn/a/gzdt2/2146.html" title="市旅游局局长刘瑜梅检查重点景区建设和旅游安全工作"><span>2016-09-28</span>&raquo; 市旅游局局长刘瑜梅检查重点景区建设和旅游安全工作</a></li>
+			
+			<li><a target="_blank" href="http://www.gzly.gov.cn/a/gzdt2/2144.html" title="广州市旅游局召开2016年第三季度安全生产工作总结、第四季度安全形势分析暨国庆黄金周工作部署会议"><span>2016-09-28</span>&raquo; 广州市旅游局召开2016年第三季度安全生产工作总结、第四季度安全形势分析暨国庆黄金周工作部署会议</a></li>
+			
+			<li><a target="_blank" href="http://www.gzly.gov.cn/a/gzdt2/2108.html" title="广州旅游志愿服务国庆黄金周不打烊"><span>2016-09-26</span>&raquo; 广州旅游志愿服务国庆黄金周不打烊</a></li>
+			
+			<li><a target="_blank" href="http://www.gzly.gov.cn/a/gzdt2/2107.html" title="省安委办督查组对我市旅游安全风险隐患排查整治专项工作开展督查"><span>2016-09-26</span>&raquo; 省安委办督查组对我市旅游安全风险隐患排查整治专项工作开展督查</a></li>
+			
+			<li><a target="_blank" href="http://www.gzly.gov.cn/a/gzdt2/index.html"><span>更多>></span></a></li>
+		</ul>
+		
+	</div>
+
+  </div>
+
+  <div class="vline">&nbsp;</div>
+  <div class="mlogo"><span>网上办事大厅</span></div>
+  <div class="box shixiang">
+	<div class="guidmain">
+		<div class="service">
+			<div class="g_title"><img src="http://www.gzly.gov.cn/themes/images/tt1.gif"></div>
+			<ul>
+				<li><img width="33" height="34" src="http://www.gzly.gov.cn/themes/images/i16.gif"/><a title="公众互动帮助" href="http://www.gzly.gov.cn/a/gzhdbz/index.html">公众互动帮助</a></li>
+				<li><img width="33" height="34" src="http://www.gzly.gov.cn/themes/images/i3.gif"/><a title="局长信箱" href="http://www.gzly.gov.cn/a/jzxx/index.html">局长信箱</a></li>
+				<li><img width="33" height="34" src="http://www.gzly.gov.cn/themes/images/i8.gif"/><a title="投诉指南" href="http://wsbs.gz.gov.cn/gz/hotline/gotoIndex.action">投诉指南</a></li>
+				<li><img width="33" height="34" src="http://www.gzly.gov.cn/themes/images/i1.gif"/><a title="旅游单位查询" href="http://www.visitgz.gov.cn/channels/132.html" target="_blank">旅游单位查询</a></li>
+			</ul>
+		</div>
+		<div class="service">
+			<div class="g_title"><img src="http://www.gzly.gov.cn/themes/images/tt2.gif"></div>
+			<ul>
+				<li><img width="33" height="34" src="http://www.gzly.gov.cn/themes/images/i13.gif"/><a title="旅行社业务" href="http://www.gzly.gov.cn/a/lyqy/index.html">旅行社业务</a></li>
+				<li><img width="33" height="34" src="http://www.gzly.gov.cn/themes/images/i14.gif"/><a title="旅游饭店星级评定" href="http://www.gzly.gov.cn/a/lyfdgl/index.html">旅游饭店星级评定</a></li>
+				<li><img width="33" height="34" src="http://www.gzly.gov.cn/themes/images/i12.gif"/><a title="旅游区（点）质量等级评定" href="http://www.gzly.gov.cn/a/lyqy/1231.html">旅游区（点）质量等级评定</a></li>
+				<li><img width="33" height="34" src="http://www.gzly.gov.cn/themes/images/i5.gif"/><a title="旅行社变更及注销事项备案办事指南" href="http://www.gzly.gov.cn/a/lyqy/index.html">旅行社变更及注销事项备案办事指南</a></li>
+			</ul>
+		</div>
+		<div class="service">
+			<div class="g_title"><img src="http://www.gzly.gov.cn/themes/images/tt4.gif"></div>
+			<ul>
+				<li><img width="33" height="34" src="http://www.gzly.gov.cn/themes/images/i15.gif"/><a title="办理导游证IC卡" href="http://www.gzly.gov.cn/a/lycyry/index.html">办理导游证IC卡</a></li>
+				<li><img width="33" height="34" src="http://www.gzly.gov.cn/themes/images/i6.gif"/><a title="导游人员资格考试" href="http://www.gzly.gov.cn/a/lycyry/index.html">导游人员资格考试</a></li>
+				<!----注释
+				<li><img width="33" height="34" src="http://www.gzly.gov.cn/themes/images/i4.gif"/><a title="导游人员培训系统" href="http://www.zgrsw.cn/Elearning_lyj/Student/index.asp">导游人员培训系统</a></li>
+				注释---->
+				<li><img width="33" height="34" src="http://www.gzly.gov.cn/themes/images/i7.gif"/><a title="办证指南" href="http://www.gzly.gov.cn/a/lycyry/index.html">办证指南</a></li>
+			</ul>
+		</div>
+		<div class="service">
+			<div class="g_title"><img src="http://www.gzly.gov.cn/themes/images/tt3.gif"></div>
+			<ul>
+				<li><img width="33" height="34" src="http://www.gzly.gov.cn/themes/images/i17.gif"/><a title="工作动态" href="http://www.gzly.gov.cn/a/gzdt2/index.html">工作动态</a></li>
+				<li><img width="33" height="34" src="http://www.gzly.gov.cn/themes/images/i2.gif"/><a title="相关法规标准" href="http://www.gzly.gov.cn/a/lyfggz/index.html">相关法规标准</a></li>
+				<li><img width="33" height="34" src="http://www.gzly.gov.cn/themes/images/i16.gif"/><a title="征集调查" href="http://www.gzly.gov.cn/a/gkyjx/index.html">公开意见征集</a></li>
+				<li><img width="33" height="34" src="http://www.gzly.gov.cn/themes/images/i11.gif"/></li>
+			</ul>
+		</div>
+	</div>
+  </div>
+  <div class="vline">&nbsp;</div>
+  
+
+
+<div class="w360 left">
+	<a target="_blank" href="http://121.8.226.112:443/lxs/enterprise/login.html"><img style="width:360px;height:79px;"="w360" src="http://www.gzly.gov.cn/themes/images/ad_360x79_1.jpg"/></a>
+</div>
+<div class="w360 right">
+	<a target="_blank" href="http://121.8.226.112:443/gzlycj/enterprise/login.action"><img style="width:360px;height:79px;" src="http://www.gzly.gov.cn/themes/images/ad_360x79_2.jpg"/></a>
+</div>
+<div class="w360 left">
+	<a target="_blank" href="http://www.gzlytj.com/Note/note_list.aspx"><img style="width:360px;height:79px;"="w360" src="http://www.gzly.gov.cn/themes/images/ad_360x79_3.jpg"/></a>
+</div>
+<div class="w360 right">
+	<a target="_blank" href="http://daoyou-chaxun.cnta.gov.cn/single_info/selectlogin_1.asp"><img style="width:360px;height:79px;" src="http://www.gzly.gov.cn/themes/images/ad_360x79_4.jpg"/></a>
+</div>
+<div class="w360 left">
+	<a target="_blank" href="http://112.124.51.37/login.jsp"><img style="width:360px;height:79px;"="w360" src="http://www.gzly.gov.cn/themes/images/ad_360x79_5.jpg"/></a>
+</div>
+<div class="w360 right">
+	<a target="_blank" href="http://www.visitgz.com/channels/54.html"><img style="width:360px;height:79px;" src="http://www.gzly.gov.cn/themes/images/ad_360x79_6.jpg"/></a>
+</div>
+<div class="vline">&nbsp;</div>
+<div class="w360 left">
+	<div class="mlogo"><a href="http://www.gzly.gov.cn/a/tzgsgg/index.html" target="_blank">更多&gt;&gt;</a><span>通知公告</span></div>
+	<div class="box mheight" style="height:280px;">
+		<ul class="list">
+			<li><a target="_blank" href="http://www.gzly.gov.cn/a/tzgsgg/2155.html"><span>2016-10-10</span>&raquo; 广州市旅游局转发广东省旅游局关于做好今年第19号台风“艾利”防御工作的通知</a></li><li><a target="_blank" href="http://www.gzly.gov.cn/a/tzgsgg/2136.html"><span>2016-09-29</span>&raquo; 广州市旅游局转发市防总关于贯彻落实国务院和省领导同志重要批示精神做好今年第17号台风“鲇鱼”防御工作的紧急通知 </a></li><li><a target="_blank" href="http://www.gzly.gov.cn/a/tzgsgg/2135.html"><span>2016-09-29</span>&raquo; 广州市旅游局关于切实做好今年第14号台风“莫兰蒂”防御工作的紧急通知 </a></li><li><a target="_blank" href="http://www.gzly.gov.cn/a/tzgsgg/2115.html"><span>2016-09-29</span>&raquo; 广州市旅游局2016年广州地区旅游酒店从业人员系列培训项目自主采购中标单位公示</a></li><li><a target="_blank" href="http://www.gzly.gov.cn/a/tzgsgg/2114.html"><span>2016-09-29</span>&raquo; 广州市旅游局转发市防总关于贯彻落实国务院和省领导同志重要批示精神做好今年第17号台风“鲇鱼”防御工作的紧急通知</a></li><li><a target="_blank" href="http://www.gzly.gov.cn/a/tzgsgg/2111.html"><span>2016-09-29</span>&raquo; 广州市旅游局关于切实做好今年第14号台风“莫兰蒂”防御工作的紧急通知</a></li><li><a target="_blank" href="http://www.gzly.gov.cn/a/tzgsgg/2110.html"><span>2016-09-28</span>&raquo; 广州市旅游局关于视频会议室改造项目中标公告</a></li><li><a target="_blank" href="http://www.gzly.gov.cn/a/tzgsgg/2109.html"><span>2016-09-26</span>&raquo; 关于黄埔军校旧址纪念馆围蔽施工的函</a></li><li><a target="_blank" href="http://www.gzly.gov.cn/a/tzgsgg/2106.html"><span>2016-09-26</span>&raquo; 广州市旅游局2016年旅游景区质量等级评定及星级农家乐评定职能转移采购中标单位公示</a></li><li><a target="_blank" href="http://www.gzly.gov.cn/a/tzgsgg/2103.html"><span>2016-09-23</span>&raquo; 优质诚信香港游红名单通报</a></li>
+		</ul>
+	</div>
+</div>
+<div class="w360 right">
+	<div class="mlogo"><a href="http://www.gzly.gov.cn/a/bszn/index.html" target="_blank">更多&gt;&gt;</a><span>办事指南</span></div>
+	<div class="box mheight" style="height:280px;">
+		<ul class="list">
+			<li><a target="_blank" href="http://www.gzly.gov.cn/a/lyqy/924.html"><span>2016-08-15</span>&raquo; 申请经营境内旅游业务和入境旅游业务旅行社审批办事指南</a></li><li><a target="_blank" href="http://www.gzly.gov.cn/a/lyqy/918.html"><span>2016-08-15</span>&raquo; 旅行社变更及注销事项备案办事指南</a></li><li><a target="_blank" href="http://www.gzly.gov.cn/a/lyqy/921.html"><span>2015-12-18</span>&raquo; 旅行社服务网点变更及注销事项备案办事指南</a></li><li><a target="_blank" href="http://www.gzly.gov.cn/a/lyqy/920.html"><span>2015-12-17</span>&raquo; 旅行社分社设立备案登记办事指引</a></li><li><a target="_blank" href="http://www.gzly.gov.cn/a/lyqy/919.html"><span>2015-12-17</span>&raquo; 旅行社分社变更及注销事项备案办事指南</a></li><li><a target="_blank" href="http://www.gzly.gov.cn/a/lyqy/1282.html"><span>2015-12-17</span>&raquo; 中国公民出国旅游空白名单表核发</a></li><li><a target="_blank" href="http://www.gzly.gov.cn/a/lyqy/923.html"><span>2015-12-17</span>&raquo; 旅游星级饭店申请</a></li><li><a target="_blank" href="http://www.gzly.gov.cn/a/lyqy/1231.html"><span>2015-12-17</span>&raquo; 旅游区(点)申报质量等级评定</a></li><li><a target="_blank" href="http://www.gzly.gov.cn/a/lyqy/922.html"><span>2015-11-30</span>&raquo; 旅行社服务网点设立备案登记办事指引</a></li><li><a target="_blank" href="http://www.gzly.gov.cn/a/lyqy/925.html"><span>2015-11-27</span>&raquo; 提取旅游服务质量保证金指引</a></li>
+		</ul>
+	</div>
+</div>
+
+<div class="vline">&nbsp;</div>
+<div class="w360 left">
+	<div class="mlogo"><a href="http://www.gzly.gov.cn/a/lyfggz/index.html" target="_blank">更多&gt;&gt;</a><span>法规文件</span></div>
+	<div class="box mheight" style="height:280px;">
+		<ul class="list">
+			<li><a target="_blank" href="http://www.gzly.gov.cn/a/lyfggz/995.html"><span>2016-05-06</span>&raquo; 广州市旅游条例</a></li><li><a target="_blank" href="http://www.gzly.gov.cn/a/lyfggz/1255.html"><span>2015-08-24</span>&raquo; 中华人民共和国旅游法</a></li><li><a target="_blank" href="http://www.gzly.gov.cn/a/lyfggz/960.html"><span>2015-08-18</span>&raquo; 旅行社条例</a></li><li><a target="_blank" href="http://www.gzly.gov.cn/a/lyfggz/1004.html"><span>2015-07-21</span>&raquo; 旅行社条例实施细则</a></li><li><a target="_blank" href="http://www.gzly.gov.cn/a/lyfggz/1001.html"><span>2015-07-21</span>&raquo; 旅行社责任保险管理办法</a></li><li><a target="_blank" href="http://www.gzly.gov.cn/a/lyfggz/1000.html"><span>2015-07-21</span>&raquo; 出境旅游领队人员管理办法</a></li><li><a target="_blank" href="http://www.gzly.gov.cn/a/lyfggz/999.html"><span>2015-07-21</span>&raquo; 旅游投诉处理办法</a></li><li><a target="_blank" href="http://www.gzly.gov.cn/a/lyfggz/998.html"><span>2015-07-21</span>&raquo; 导游人员管理实施办法</a></li><li><a target="_blank" href="http://www.gzly.gov.cn/a/lyfggz/997.html"><span>2015-07-21</span>&raquo; 导游人员管理条例</a></li><li><a target="_blank" href="http://www.gzly.gov.cn/a/lyfggz/996.html"><span>2015-07-21</span>&raquo; 中国公民出国旅游管理办法</a></li>
+		</ul>
+	</div>
+</div>
+<div class="w360 right">
+	<div class="mlogo"><a href="http://www.gzly.gov.cn/a/qiwj/index.html" target="_blank">更多&gt;&gt;</a><span>行业管理</span></div>
+	<div class="box mheight" style="height:280px;">
+		<ul class="list">
+			<li><a target="_blank" href="http://www.gzly.gov.cn/a/lxsgl/2126.html" ><span>2016-09-29</span>&raquo; 广州市旅游局关于更新广州地区旅行社“优质诚信香港游”红名单的通报</a></li><li><a target="_blank" href="http://www.gzly.gov.cn/a/lxsgl/2121.html" ><span>2016-09-29</span>&raquo; 广州市旅游局关于批准设立广州途聚国际旅行社有限公司的批复</a></li><li><a target="_blank" href="http://www.gzly.gov.cn/a/lxsgl/2120.html" ><span>2016-09-29</span>&raquo; 广州市旅游局关于批准设立广东欢泰国际旅行社有限公司的批复</a></li><li><a target="_blank" href="http://www.gzly.gov.cn/a/lxsgl/2119.html" ><span>2016-09-29</span>&raquo; 广州市旅游局关于批准广州伴旅文化有限公司经营境内旅游和入境旅游业务的批复</a></li><li><a target="_blank" href="http://www.gzly.gov.cn/a/lxsgl/2118.html" ><span>2016-09-29</span>&raquo; 广州市旅游局关于批准设立广州乐潇游国际旅行社有限公司的批复</a></li><li><a target="_blank" href="http://www.gzly.gov.cn/a/lxsgl/2070.html" ><span>2016-09-07</span>&raquo; 广州市旅游局关于批准广州山拾网络科技有限公司经营境内旅游和入境旅游业务的批复</a></li><li><a target="_blank" href="http://www.gzly.gov.cn/a/lxsgl/2069.html" ><span>2016-09-07</span>&raquo; 广州市旅游局关于批准设立广州市中港泰国际旅行社有限责任公司的批复</a></li><li><a target="_blank" href="http://www.gzly.gov.cn/a/lxsgl/2068.html" ><span>2016-09-07</span>&raquo; 广州市旅游局关于批准设立广州市万里国际旅行社有限公司的批复</a></li><li><a target="_blank" href="http://www.gzly.gov.cn/a/lxsgl/2067.html" ><span>2016-09-07</span>&raquo; 广州市旅游局关于批准设立广州延锦假期旅行社有限公司的批复</a></li><li><a target="_blank" href="http://www.gzly.gov.cn/a/lxsgl/2058.html" ><span>2016-09-01</span>&raquo; 关于拟对2015年度广州市旅行社组织接待游客来穗旅游实施奖励的公示</a></li>
+		</ul>
+	</div>
+</div>
+
+<div class="vline">&nbsp;</div>
+<div class="w360 left">
+	<div class="mlogo"><a href="http://www.gzly.gov.cn/a/czys/index.html" target="_blank">更多&gt;&gt;</a><span>财政预算</span></div>
+	<div class="box mheight">
+		<ul class="list">
+			<li><a target="_blank" href="http://www.gzly.gov.cn/a/czys/1645.html"><span>2016-03-15</span>&raquo; 广州市旅游局2016年部门预算</a></li><li><a target="_blank" href="http://www.gzly.gov.cn/a/czys/942.html"><span>2015-03-11</span>&raquo; 广州市旅游局2015年部门预算</a></li><li><a target="_blank" href="http://www.gzly.gov.cn/a/czys/969.html"><span>2014-03-18</span>&raquo; 广州市旅游局2014年部门预算</a></li><li><a target="_blank" href="http://www.gzly.gov.cn/a/czys/976.html"><span>2013-03-12</span>&raquo; 广州市旅游局2013年部门预算</a></li><li><a target="_blank" href="http://www.gzly.gov.cn/a/czys/977.html"><span>2012-02-08</span>&raquo; 广州市旅游局2012年部门预算</a></li>
+		</ul>
+	</div>
+</div>
+<div class="w360 right">
+	<div class="mlogo"><a href="http://www.gzly.gov.cn/a/rdjy/index.html" target="_blank">更多&gt;&gt;</a><span>人大建议</span></div>
+	<div class="box mheight">
+		<ul class="list">
+			<li><a target="_blank" href="http://www.gzly.gov.cn/a/rdjy/2002.html" ><span>2016-05-31</span>&raquo; 广州市旅游局关于对广州市第十四届人大六次会议代表建议第20171号的答复意见</a></li><li><a target="_blank" href="http://www.gzly.gov.cn/a/rdjy/2001.html" ><span>2016-05-31</span>&raquo; 广州市旅游局关于对广州市人大第十四届六次会议代表建议第201620259号的答复</a></li><li><a target="_blank" href="http://www.gzly.gov.cn/a/rdjy/2000.html" ><span>2016-05-31</span>&raquo; 广州市旅游局关于对广州市人大第十四届六次会议代表建议第201620386号的答复</a></li><li><a target="_blank" href="http://www.gzly.gov.cn/a/rdjy/1999.html" ><span>2016-05-31</span>&raquo; 广州市旅游局关于对广州市第十四届人民代表大会第六次会议代表建议第201620261号的答复</a></li><li><a target="_blank" href="http://www.gzly.gov.cn/a/rdjy/1778.html" ><span>2016-05-31</span>&raquo; 2016年人大代表建议和政协提案</a></li>
+		</ul>
+	</div>
+</div>
+
+<div class="vline">&nbsp;</div>
+<div class="w735">
+ 	<a target="_blank" href="http://www.visitgz.com/lyzt37.html">
+	<img class="w735" src="http://www.visitgz.gov.cn/lizhuo/images37/index_0728.jpg"/>
+	</a>
+</div>
+<div class="w735">
+	<a target="_blank" href="http://www.visitgz.com/lyzt12.html"><img class="w735" src="http://www.gzly.gov.cn/themes/images/index_12.jpg"/></a>
+</div>
+<div class="w735">
+	<a target="_blank" href="http://www.visitgz.com/lyzt25.html"><img class="w735" src="http://www.gzly.gov.cn/themes/images/index_07.jpg"/></a>
+</div>
+<div class="w735">
+	<a target="_blank" href="http://www.visitgz.com/contents/55/8317.html"><img class="w735" src="http://www.gzly.gov.cn/themes/images/index_08.jpg"/></a>
+</div>
+
+</div>
+
+<div class="side right">
+  
+<script type="text/javascript" src="http://www.gzly.gov.cn/js/tv/flowplayer-3.2.6.min.js"></script>
+
+
+
+
+
+<div class="r_wsbs">
+<!--网页flv,mp4视频播放器PlayerLite/代码开始-->
+    <div id="my52player" style="width: 240px; height: 180px;">    </div>
+    <script>
+	flowplayer("my52player", "http://www.gzly.gov.cn/js/tv/flowplayer-3.2.7.swf", { clip: { url: "http://www.gzly.gov.cn/f/res/tv/index.flv",    autoPlay: false, autoBuffering: true} });
+    </script>
+	<div class="vline">&nbsp;</div>
+<!--网页flv,mp4视频播放器PlayerLite/代码结束-->
+	<a target="_blank" href="http://www.gzly.gov.cn/a/jzxx/index.html"><img src="http://www.gzly.gov.cn/themes/images/jzxx.png"></a>
+	<a target="_blank" href="http://www.gzly.gov.cn/a/gkyjx/index.html"><img src="http://www.gzly.gov.cn/themes/images/gkyjx.png"></a>
+	<a target="_blank" href="http://wsbs.gz.gov.cn/gz/index.jsp"><img src="http://www.gzly.gov.cn/themes/images/ad_bsdt.jpg"></a>
+</div>
+
+
+
+<div class="vline">&nbsp;</div>
+<div class="gk">
+	
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="vname">&nbsp;&nbsp;信息公开</div>
+<div class="vbox">
+<ul>
+	
+		<li><a href="http://www.gzly.gov.cn/a/gkzn/index.html">&raquo;&nbsp;公开指南</a></li>
+		<li><a target="_bank" href="http://www.gzly.gov.cn/a/ysqgk/index.html">&raquo;&nbsp;依申请公开</a></li>
+	
+	
+	
+	
+	<li><a>&raquo;&nbsp;组织机构</a></li>
+	<li><a class="sm" href="http://www.gzly.gov.cn/a/jggk/index.html">&raquo;&nbsp;机构概况</a></li>
+	
+	<li><a class="sm" href="http://www.gzly.gov.cn/a/jgzn/index.html">&raquo;&nbsp;机构职能</a></li>
+	
+	<li><a class="sm" href="http://www.gzly.gov.cn/a/ldfg/index.html">&raquo;&nbsp;领导分工</a></li>
+	
+	
+	<li><a>&raquo;&nbsp;部门文件</a></li>
+	<li><a class="sm" href="http://www.gzly.gov.cn/a/gfxwj/index.html">&raquo;&nbsp;规范性文件</a></li>
+	
+	<li><a class="sm" href="http://www.gzly.gov.cn/a/lyfggz/index.html">&raquo;&nbsp;旅游法律、法规、规章</a></li>
+	
+	<li><a class="sm" href="http://www.gzly.gov.cn/a/ghjh/index.html">&raquo;&nbsp;规划计划</a></li>
+	
+	<li><a class="sm">&raquo;&nbsp;其他文件</a></li>
+	<li><a class="sm" href="http://www.gzly.gov.cn/a/scxcytg/index.html">&nbsp;&nbsp;&raquo;&nbsp;市场宣传与推广</a></li>
+	<li><a class="sm" href="http://www.gzly.gov.cn/a/lyzygl/index.html">&nbsp;&nbsp;&raquo;&nbsp;旅游资源管理</a></li>
+	<li><a class="sm" href="http://www.gzly.gov.cn/a/lyfdgl/index.html">&nbsp;&nbsp;&raquo;&nbsp;旅游饭店管理</a></li>
+	<li><a class="sm" href="http://www.gzly.gov.cn/a/lxsgl/index.html">&nbsp;&nbsp;&raquo;&nbsp;旅行社管理</a></li>
+	<li><a class="sm" href="http://www.gzly.gov.cn/a/hypx/index.html">&nbsp;&nbsp;&raquo;&nbsp;行业培训</a></li>
+	<li><a class="sm" href="http://www.gzly.gov.cn/a/qtwjqt/index.html">&nbsp;&nbsp;&raquo;&nbsp;其他</a></li>
+	
+	
+	<li><a>&raquo;&nbsp;行政执法</a></li>
+	<li><a class="sm" href="http://www.gzly.gov.cn/a/xzcf/index.html">&raquo;&nbsp;行政处罚(信用信息双公示)</a></li>
+	
+	<li><a class="sm" href="http://www.gzly.gov.cn/a/xzxk/index.html">&raquo;&nbsp;行政许可(信用信息双公示)</a></li>
+	
+	<li><a class="sm">&raquo;&nbsp;其他具体行政行为</a></li>
+	<li><a class="sm" href="http://www.gzly.gov.cn/a/lyzl/index.html">&nbsp;&nbsp;&raquo;&nbsp;旅游质量</a></li>
+	<li><a class="sm" href="http://www.gzly.gov.cn/a/lyaq/index.html">&nbsp;&nbsp;&raquo;&nbsp;旅游安全</a></li>
+	<li><a class="sm" href="http://www.gzly.gov.cn/a/lyqt/index.html">&nbsp;&nbsp;&raquo;&nbsp;其他</a></li>
+	
+	
+	<li><a>&raquo;&nbsp;办事指南</a></li>
+	<li><a class="sm" href="http://www.gzly.gov.cn/a/smlyz/index.html">&raquo;&nbsp;市民旅游者</a></li>
+	
+	<li><a class="sm" href="http://www.gzly.gov.cn/a/lyqy/index.html">&raquo;&nbsp;旅游企业</a></li>
+	
+	<li><a class="sm" href="http://www.gzly.gov.cn/a/lycyry/index.html">&raquo;&nbsp;旅游从业人员</a></li>
+	
+	
+	<li><a>&raquo;&nbsp;工作动态</a></li>
+	<li><a class="sm" href="http://www.gzly.gov.cn/a/gzdt2/index.html">&raquo;&nbsp;工作动态</a></li>
+	
+	
+	<li><a>&raquo;&nbsp;财政预决算</a></li>
+	<li><a class="sm" href="http://www.gzly.gov.cn/a/czys/index.html">&raquo;&nbsp;财政预算</a></li>
+	
+	<li><a class="sm" href="http://www.gzly.gov.cn/a/czjs/index.html">&raquo;&nbsp;财政决算</a></li>
+	
+	<li><a class="sm" href="http://www.gzly.gov.cn/a/czqt/index.html">&raquo;&nbsp;其他</a></li>
+	
+	
+	<li><a>&raquo;&nbsp;政府信息公开工作年度报告</a></li>
+	<li><a class="sm" href="http://www.gzly.gov.cn/a/zfxxgk2/index.html">&raquo;&nbsp;政府信息公开工作年度报告</a></li>
+	
+	
+	<li><a>&raquo;&nbsp;其他</a></li>
+	<li><a class="sm">&raquo;&nbsp;人大建议政协提案</a></li>
+	<li><a class="sm" href="http://www.gzly.gov.cn/a/rdjy/index.html">&nbsp;&nbsp;&raquo;&nbsp;人大建议</a></li>
+	<li><a class="sm" href="http://www.gzly.gov.cn/a/zxta/index.html">&nbsp;&nbsp;&raquo;&nbsp;政协提案</a></li>
+	
+	<li><a class="sm">&raquo;&nbsp;统计数据</a></li>
+	<li><a class="sm" href="http://www.gzly.gov.cn/a/hjztj/index.html">&nbsp;&nbsp;&raquo;&nbsp;黄金周统计信息</a></li>
+	<li><a class="sm" href="http://www.gzly.gov.cn/a/ydndtj/index.html">&nbsp;&nbsp;&raquo;&nbsp;月度年度统计数</a></li>
+	
+	<li><a class="sm" href="http://www.gzly.gov.cn/a/zyhynr/index.html">&raquo;&nbsp;重要会议内容</a></li>
+	
+	<li><a class="sm" href="http://www.gzly.gov.cn/a/rsrmsx/index.html">&raquo;&nbsp;人事任免事项</a></li>
+	
+	<li><a class="sm" href="http://www.gzly.gov.cn/a/tzgsgg/index.html">&raquo;&nbsp;通知、公示、公告</a></li>
+	
+	<li><a class="sm" href="http://www.gzly.gov.cn/a/othersqt/index.html">&raquo;&nbsp;其他</a></li>
+	
+	
+	
+</ul>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="zxdc"></div>
+<script type="text/javascript">
+$.getJSON('http://www.gzly.gov.cn/zw/zwclient/survey/surveyJsonAction.jsp', function(data){
+	var result = data.result;
+	var zxdc="";
+	for(var i = 0; i < result.length; i++){
+		var d = result[i];
+		var t;
+		if(i == 0){
+			t = "<div class=\"vline\">&nbsp;</div><a style=\"text-decoration: none;\" onclick=\"showLogo("+i+");return false;\" href=\"#\"><div id=\"logo"+(i+1)+"\" class=\"r_logo\"><span>在线调查"+(i+1)+"</span></div></a><div style=\"display:;\" id=\"box"+(i+1)+"\" class=\"box\"><form style=\"padding-left:10px;\" method=\"post\" action=\"zw/zwclient/survey/surveyAction.jsp?keyIndex="+d.id+"\">";
+		}else{
+			t = "<div class=\"vline\">&nbsp;</div><a style=\"text-decoration: none;\" onclick=\"showLogo("+i+");return false;\" href=\"#\"><div id=\"logo"+(i+1)+"\" class=\"r_logo\"><span>在线调查"+(i+1)+"</span></div></a><div style=\"display: none;\" id=\"box"+(i+1)+"\" class=\"box\"><form style=\"padding-left:10px;\" method=\"post\" action=\"zw/zwclient/survey/surveyAction.jsp?keyIndex="+d.id+"\">";
+		}
+		
+		t = t + "<ul style=\"list-style:none;\"><h4>"+d.title+"</h4>";
+		if(d.option1 != ""){
+			t = t + "<li><input type=\"radio\" id=\"choice1\" name=\"choice\" value=\"1\"/>&nbsp;&nbsp;"+d.option1+"</li>";
+		}
+		if(d.option2 != ""){
+			t = t + "<li><input type=\"radio\" id=\"choice2\" name=\"choice\" value=\"2\"/>&nbsp;&nbsp;"+d.option2+"</li>";
+		}
+		if(d.option3 != ""){
+			t = t + "<li><input type=\"radio\" id=\"choice3\" name=\"choice\" value=\"3\"/>&nbsp;&nbsp;"+d.option3+"</li>";
+		}
+		if(d.option4 != ""){
+			t = t + "<li><input type=\"radio\" id=\"choice4\" name=\"choice\" value=\"4\"/>&nbsp;&nbsp;"+d.option4+"</li>";
+		}
+		if(d.option5 != ""){
+			t = t + "<li><input type=\"radio\" id=\"choice5\" name=\"choice\" value=\"5\"/>&nbsp;&nbsp;"+d.option5+"</li>";
+		}
+		if(d.option6 != ""){
+			t = t + "<li><input type=\"radio\" id=\"choice6\" name=\"choice\" value=\"6\"/>&nbsp;&nbsp;"+d.option6+"</li>";
+		}
+		if(d.option7 != ""){
+			t = t + "<li><input type=\"radio\" id=\"choice7\" name=\"choice\" value=\"7\"/>&nbsp;&nbsp;"+d.option7+"</li>";
+		}
+		if(d.option8 != ""){
+			t = t + "<li><input type=\"radio\" id=\"choice8\" name=\"choice\" value=\"8\"/>&nbsp;&nbsp;"+d.option8+"</li>";
+		}
+		if(d.option9 != ""){
+			t = t + "<li><input type=\"radio\" id=\"choice9\" name=\"choice\" value=\"9\"/>&nbsp;&nbsp;"+d.option9+"</li>";
+		}
+		if(d.option10 != ""){
+			t = t + "<li><input type=\"radio\" id=\"choice10\" name=\"choice\" value=\"10\"/>&nbsp;&nbsp;"+d.option10+"</li>";
+		}
+		if(d.option11 != ""){
+			t = t + "<li><input type=\"radio\" id=\"choice11\" name=\"choice\" value=\"11\"/>&nbsp;&nbsp;"+d.option11+"</li>";
+		}
+		if(d.option12 != ""){
+			t = t + "<li><input type=\"radio\" id=\"choice12\" name=\"choice\" value=\"12\"/>&nbsp;&nbsp;"+d.option12+"</li>";
+		}
+		if(d.option13 != ""){
+			t = t + "<li><input type=\"radio\" id=\"choice13\" name=\"choice\" value=\"13\"/>&nbsp;&nbsp;"+d.option13+"</li>";
+		}
+		if(d.option14 != ""){
+			t = t + "<li><input type=\"radio\" id=\"choice14\" name=\"choice\" value=\"14\"/>&nbsp;&nbsp;"+d.option14+"</li>";
+		}
+		if(d.option15 != ""){
+			t = t + "<li><input type=\"radio\" id=\"choice15\" name=\"choice\" value=\"15\"/>&nbsp;&nbsp;"+d.option15+"</li>";
+		}
+		t = t+"</ul><br/><input type=\"submit\" style=\"width: 60px;height:25px;background-color:#0192D0;border:0px;border-radius:2px;color:#fff;\" value=\"投票\"/>  <a style=\"text-decoration:none;color:#da3b01;\" href=\"http://www.gzly.gov.cn/a/dcjg/index.html?keyIndex="+d.id+"\"\">查看结果</a></form><div class=\"vline\">&nbsp;</div></div>";
+		zxdc = zxdc + t;
+	}
+	document.getElementById('zxdc').innerHTML = zxdc;
+});
+function showLogo(d){
+	if(d == 0){
+		document.getElementById("box1").style.display="";
+		document.getElementById("box2").style.display="none";
+		document.getElementById("box3").style.display="none";
+	}else if(d == 1){
+		document.getElementById("box1").style.display="none";
+		document.getElementById("box2").style.display="";
+		document.getElementById("box3").style.display="none";
+	}else if(d == 2){
+		document.getElementById("box1").style.display="none";
+		document.getElementById("box2").style.display="none";
+		document.getElementById("box3").style.display="";
+	}
+}
+</script>
+
+
+
+</div>
+
+</div>
+<div class="w990 clearfix">
+
+<div class="links">
+  <div class="hd">
+	<div class="right">
+		<select onchange="location.href=this.value;">
+			<option value="">中央政府和国家部委网站</option>
+			<option value="http://www.fmprc.gov.cn">外交部</option>
+			<option value="http://www.mofcom.gov.cn/">商务部</option>
+			<option value="http://www.moa.gov.cn/">农业部</option>
+			<option value="http://www.mohurd.gov.cn/">建设部</option>
+			<option value="http://www.moc.gov.cn">交通部</option>
+			<option value="http://www.mca.gov.cn">民政部</option>
+			<option value="http://www.mps.gov.cn/">公安部</option>
+			<option value="http://www.most.gov.cn">科技部</option>
+			<option value="http://www.moe.edu.cn">教育部</option>
+			<option value="http://www.cnta.gov.cn/">国家旅游局</option>
+			<option value="http://www.cma.gov.cn">中国气象局</option>
+			<option value="http://www.mlr.gov.cn/">国土资源部</option>
+			<option value="http://www.miit.gov.cn">工业和信息化部</option>
+			<option value="http://www.mohrss.gov.cn/">劳动和社会保障部</option>
+			<option value="http://www.nhfpc.gov.cn/">国家人口与计生委</option>
+			<option value="http://www.sdpc.gov.cn">国家发展和改革委员会</option>
+			<option value="http://www.sarft.gov.cn/">国家新闻出版广电总局</option>
+		</select>
+		<select onchange="location.href=this.value;">
+			<option value="">广东省(区市)政府网站</option>
+			<option value="http://www.gdta.gov.cn/" >省旅游局</option>
+			<option value="http://www.gddkj.gov.cn">省地质局</option>
+			<option value="http://www.gdass.gov.cn/">省社科院</option>
+			<option value="http://www.bmj.gd.gov.cn/">省保密局</option>
+			<option value="http://www.gdccad.gov.cn/">省人防办</option>
+			<option value="http://www.gdjrb.gov.cn/">省金融办</option>
+			<option value="http://www.hmo.gd.gov.cn/">省港澳办</option>
+			<option value="http://www.qb.gd.gov.cn/">省侨务办</option>
+			<option value="http://www.gdfao.gd.gov.cn">省外事办</option>
+			<option value="http://www.fzb.gd.gov.cn/">省法制办</option>
+			<option value="http://www.gdf.gov.cn/">省林业局</option>
+			<option value="http://www.gdgs.gov.cn/">省工商局</option>
+			<option value="http://www.gdpi.gov.cn/">省物价局</option>
+			<option value="http://www.gdstats.gov.cn/">省统计局</option>
+			<option value="http://www.gdqts.gov.cn/">省质监局</option>
+			<option value="http://www.gdsports.net/">省体育局</option>
+			<option value="http://www.gdltax.gov.cn/">省地税局</option>
+			<option value="http://www.gdgz.gov.cn">省国资委</option>
+			<option value="http://www.gdga.gov.cn">省公安厅</option>
+			<option value="http://www.gdaudit.gov.cn/">省审计厅</option>
+			<option value="http://www.gdwht.gov.cn/">省文化厅</option>
+			<option value="http://www.gdagri.gov.cn/">省农业厅</option>
+			<option value="http://www.gdwater.gov.cn/">省水利厅</option>
+			<option value="http://www.gdczt.gov.cn">省财政厅</option>
+			<option value="http://www.gdsf.gov.cn">省司法厅</option>
+			<option value="http://www.gdmz.gov.cn/">省民政厅</option>
+			<option value="http://www.gdstc.gov.cn">省科技厅</option>
+			<option value="http://www.gdhed.edu.cn">省教育厅</option>
+			<option value="http://www.gdcss.gd.gov.cn/">省参事室</option>
+			<option value="http://www.gd.gov.cn/">省府办公厅</option>
+			<option value="http://gd-info.gov.cn/">省地方志办</option>
+			<option value="http://www.gddoftec.gov.cn/">省外经贸厅</option>
+			<option value="http://www.gddrc.gov.cn">省发展改革委</option>
+			<option value="http://www.gdipo.gov.cn/">省知识产权局</option>
+			<option value="http://www.gdsafety.gov.cn">省安全监管局</option>
+			<option value="http://www.gdofa.gov.cn/">省海洋渔业局</option>
+			<option value="http://www.gdcd.gov.cn/">省交通运输厅</option>
+			<option value="http://www.gdep.gov.cn/">省环境保护厅</option>
+			<option value="http://www.gdlr.gov.cn/">省国土资源厅</option>
+			<option value="http://www.gdjct.gd.gov.cn/">省纪委监察厅</option>
+			<option value="http://www.mzzjw.gd.gov.cn">省民族宗教委</option>
+			<option value="http://www.gdyjzx.gov.cn/">省发展研究中心</option>
+			<option value="http://www.gdcic.net/">省住房城乡建设厅</option>
+			<option value="http://www.rftgd.gov.cn/">省新闻出版广电局</option>
+			<option value="http://www.gdei.gov.cn/">省经济和信息化委</option>
+			<option value="http://www.gdhrss.gov.cn/">省人力资源社会保障厅</option>
+			<option value="http://www.gdwst.gov.cn/">省卫生和计划生育委员会</option>
+		</select>
+		<select onchange="location.href=this.value;">
+			<option value="">广东省各市旅游局网站</option>
+			<option value="http://www.gzly.gov.cn/">广州市旅游局</option>
+			<option value="http://foshangov.visitfoshan.com/">佛山市旅游局</option>
+			<option value="http://dgtour.dg.gov.cn/">东莞市旅游局</option>
+			<option value="http://www.hyta.gov.cn/">河源市旅游局</option>
+			<option value="http://yfly.yunfu.gov.cn/">云浮市旅游局</option>
+			<option value="http://www.swly.org.cn/">汕尾市旅游局</option>
+			<option value="http://lyj.huizhou.gov.cn">惠州市旅游局</option>
+			<option value="http://www.sgta.gov.cn/">韶关市旅游局</option>
+			<option value="http://www.mzta.gov.cn/gov/">梅州市旅游局</option>
+			<option value="http://www.mmlyj.net">茂名市旅游局</option>
+			<option value="http://www.jm-tour.com/">江门市旅游局</option>
+			<option value="http://www.zhongshantour.com.cn/">中山市旅游局</option>
+			<option value="http://www.visitjy.com/">揭阳市旅游局</option>
+			<option value="http://www.yjlwqq.gov.cn/">阳江市旅游局</option>
+			<option value="http://www.gdzjtravel.com/">湛江市旅游局</option>
+			<option value="http://zw.stly.gov.cn/">汕头市旅游局</option>
+			<option value="http://www.qyta.gov.cn/">清远市旅游局</option>
+			<option value="http://www.zhwtl.gov.cn/">珠海市文体旅游局</option>
+			<option value="http://www.szwtl.gov.cn/">深圳市文体旅游局</option>
+			<option value="http://www.chaozhoutour.net/">潮州市文物旅游局</option>
+		</select>
+		<select onchange="location.href=this.value;">
+			<option value="">广州市各区政府网站</option>
+			<option value="http://www.yuexiu.gov.cn/">越秀区</option>
+			<option value="http://www.thnet.gov.cn/">天河区</option>
+			<option value="http://www.lw.gov.cn/">荔湾区</option>
+			<option value="http://www.by.gov.cn/">白云区</option>
+			<option value="http://www.haizhu.gov.cn/">海珠区</option>
+			<option value="http://www.panyu.gov.cn/">番禺区</option>
+			<option value="http://web.hp.gov.cn/">黄埔区</option>
+			<option value="http://www.huadu.gov.cn/">花都区</option>
+			<option value="http://www.gzns.gov.cn/">南沙区</option>
+			<option value="http://www.zcly.gov.cn/">增城区</option>
+			<option value="http://www.conghua.gov.cn/">从化区</option>
+		</select>
+		<!-----
+		<select onchange="location.href=this.value;">
+			<option value="">其他友情链接</option>
+			<option value="#">  </option>
+			<option value="#">  </option>
+			<option value="#">  </option>
+			<option value="#">  </option>
+		</select>
+		----->
+	</div>
+	<h2>友情链接</h2>
+  </div>
+  <div class="bd">
+	<ul>
+		<li><a target="_blank" href="#">  </a></li>
+		<li><a target="_blank" href="#">  </a></li>
+		<li><a target="_blank" href="#">  </a></li>
+		<li><a target="_blank" href="#">  </a></li>
+	</ul>
+  </div>
+</div>
+</div>
+	
+
+<div class="footer">
+	<div>
+		<a class="dzjg" target="_blank"><img src="http://www.gzly.gov.cn/themes/web/red.png"/></a>
+		<p>
+			版权所有：广州市旅游局&nbsp;&nbsp;&nbsp;访问统计<script type="text/javascript" src="http://s23.cnzz.com/stat.php?id=3438589&web_id=3438589&show=pic"></script><br />
+			旅游和投诉：12345&nbsp;&nbsp;旅游紧急救援：81078250<br />
+            旅游局前台：81078225&nbsp;&nbsp;网站技术支持：81306627<br />
+			网络技术支持邮箱：ghc8107@126.com<br />
+			<a href="http://www.miitbeian.gov.cn">粤ICP备14092107号-3</a>&nbsp;&nbsp;&nbsp;粤公网安备44010402000260号
+		</p>
+		<a class="gs" target="_blank"><img src="http://www.gzly.gov.cn/themes/web/gongshang.gif"/></a>
+	</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+</body>
