@@ -1,8 +1,8 @@
 /*!
  * jQuery Form Plugin
- * version: 3.50.0-2014.02.05
+ * version: 3.51.0-2014.06.20
  * Requires jQuery v1.5 or later
- * Copyright (c) 2013 M. Alsup
+ * Copyright (c) 2014 M. Alsup
  * Examples and documentation at: http://malsup.com/jquery/form/
  * Project repository: https://github.com/malsup/form
  * Dual licensed under the MIT and GPL licenses.
@@ -196,7 +196,7 @@ var xhr = $.ajaxSettings.xhr();
 if (xhr.upload) {
 xhr.upload.addEventListener('progress', function(event) {
 var percent = 0;
-var position = event.loaded || event.position; /*event.position is deprecated*/
+var position = event.loaded || event.position;
 var total = event.total;
 if (event.lengthComputable) {
 percent = Math.ceil(position / total * 100);
@@ -323,7 +323,6 @@ var SERVER_ABORT = 2;
 
 function getDoc(frame) {
 var doc = null;
-
 try {
 if (frame.contentWindow) {
 doc = frame.contentWindow.document;
@@ -347,8 +346,8 @@ s.extraData = s.extraData || {};
 s.extraData[csrf_param] = csrf_token;
 }
 function doSubmit() {
-var t = $form.attr2('target'), 
-a = $form.attr2('action'), 
+var t = $form.attr2('target'),
+a = $form.attr2('action'),
 mp = 'multipart/form-data',
 et = $form.attr('enctype') || $form.attr('encoding') || mp;
 form.setAttribute('target',id);
@@ -431,7 +430,7 @@ if (s.forceSync) {
 doSubmit();
 }
 else {
-setTimeout(doSubmit, 10); 
+setTimeout(doSubmit, 10);
 }
 var data, doc, domCheckCount = 50, callbackProcessed;
 function cb(e) {
@@ -574,7 +573,7 @@ $io.attr('src', s.iframeSrc);
 xhr.responseXML = null;
 }, 100);
 }
-var toXml = $.parseXML || function(s, doc) { 
+var toXml = $.parseXML || function(s, doc) {
 if (window.ActiveXObject) {
 doc = new ActiveXObject('Microsoft.XMLDOM');
 doc.async = 'false';
@@ -686,15 +685,12 @@ var els2;
 if (els && !/MSIE [678]/.test(navigator.userAgent)) {
 els = $(els).get();
 }
-//fix ie10 flash object
-try{
 if ( formId ) {
-els2 = $(':input[form=' + formId + ']').get();
+els2 = $(':input[form="' + formId + '"]').get();
 if ( els2.length ) {
 els = (els || []).concat(els2);
 }
 }
-}catch(e){}
 if (!els || !els.length) {
 return a;
 }
@@ -832,7 +828,7 @@ $('input,select,textarea', this).clearFields(includeHidden);
 });
 };
 $.fn.clearFields = $.fn.clearInputs = function(includeHidden) {
-var re = /^(?:color|date|datetime|email|month|number|password|range|search|tel|text|time|url|week)$/i; // 'hidden' is not in this list
+var re = /^(?:color|date|datetime|email|month|number|password|range|search|tel|text|time|url|week)$/i;
 return this.each(function() {
 var t = this.type, tag = this.tagName.toLowerCase();
 if (re.test(t) || tag == 'textarea') {
