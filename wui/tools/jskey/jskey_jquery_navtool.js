@@ -1,39 +1,38 @@
 (function($){
+
+
+
 document.write(
 "<style type='text/css'>" + 
-".nav-tool{position:relative;margin:0 auto;clear:both;}" +
+".nav-tool{position:relative;margin:0 auto;clear:both;width:100%;height:100%;}" +
 ".nav-tool *{margin:0;padding:0;}" +
-".nav-tool a,.nav-up a:link{color:#999;text-decoration:none;display:inline-block;}" +
+".nav-tool a,.nav-up a:link{color:#eee;text-decoration:none;display:inline-block;}" +
 ".nav-tool a:link{cursor:pointer;}" +
 ".nav-tool a:hover{color:#fff;text-decoration:none;outline:none;}" +
 
 ".nav-up{position:absolute;top:0;width:100%;}" +
 ".nav-up ul{diaplay:block;list-style-type:none;}" +
-
 ".nav-down{position:absolute;width:100%;}" +
 ".nav-down .nav-down-menu{z-index:47;position:absolute;top:0px;display:none;}" +
-".nav-down dl{float:left;margin:10px 40px 8px 40px;}" +
-".nav-down dt{margin-bottom:10px;padding-bottom:10px;}" +
-".nav-down dt a{padding:0;}" +
-".nav-down dd{margin-bottom:8px;padding-bottom:8px;}" +
-".nav-down dd a{padding:0;}" +
+".nav-down dl{float:left;margin:12px;text-align:center;}" +
+".nav-down dt{margin-bottom:2px;padding-bottom:2px;}" +
+".nav-down dt a{font-weight:normal;display:block;min-width:66px;}" +
+".nav-down dd{margin-bottom:1px;padding-bottom:1px;}" +
+".nav-down dd a{font-weight:normal;display:block;min-width:66px;}" +
 
-".nav-tool{width:100%;height:100%;}" +
 ".nav-up{height:38px;background-color:#222;}" +
 ".nav-up li{float:left;background-color:inherit;}" +
-".nav-up a{line-height:38px;height:38px;padding:0 25px;font-weight:normal;font-size:14px;}" +
+".nav-up a{line-height:38px;height:38px;padding:0 26px;font-weight:normal;font-size:14px;}" +
 ".nav-up .nav-up-hover a{}" +
 ".nav-up .nav-up-hover a:hover{}" +
-
 ".nav-down{top:38px;left:0px;}" +
-".nav-down a{line-height:20px;height:20px;font-weight:normal;}" +
-".nav-down .nav-down-menu{width:100%;background-color:#344157;}" +
+".nav-down .nav-down-menu{width:100%;background-color:#000;}" +
 ".nav-down dt{border-bottom:2px solid #aaa;}" +
-".nav-down dt a{color:#999;font-size:14px;}" +
-".nav-down dt a:hover{color:#fff;}" +
+".nav-down dt a{padding:0 22px;line-height:35px;height:35x;color:#ddd;font-size:14px;}" +
+".nav-down dt a:hover{}" +
 ".nav-down dd{border-bottom:1px dashed #777;}" +
-".nav-down dd a{color:#888;font-size:14px;}" +
-".nav-down dd a:hover{color:#fff;}" +
+".nav-down dd a{padding:0 22px;line-height:35px;height:35x;color:#ccc;font-size:14px;}" +
+".nav-down dd a:hover{}" +
 "</style>"
 );
 
