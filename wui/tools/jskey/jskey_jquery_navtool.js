@@ -5,7 +5,7 @@
 document.write(
 "<style type='text/css'>" + 
 ".nav-tool{position:relative;margin:0 auto;clear:both;width:100%;height:100%;}" +
-".nav-tool *{margin:0;padding:0;}" +
+".nav-tool *{margin:0;padding:0;font-family:arial,\"microsoft yahei\",\"\u5B8B\u4F53\"}" +
 ".nav-tool a,.nav-up a:link{color:#eee;text-decoration:none;display:inline-block;}" +
 ".nav-tool a:link{cursor:pointer;}" +
 ".nav-tool a:hover{color:#fff;text-decoration:none;outline:none;}" +

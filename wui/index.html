@@ -1,21 +1,84 @@
 <!DOCTYPE html>
 <html lang="zh_CN">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/css/bootstrap.css">
-    <script src="https://cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
-    <script src="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/js/bootstrap.js"></script>
-  </head>
-  <body>
-    <h1>Hello, world!</h1>
-    
-    
-    
-    
-    
-    
-    
-  </body>
+<head><meta charset="utf-8">
+<title></title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0,minimal-ui"/>
+<link rel="stylesheet" href="./themes/web.css" />
+<script src="http://apps.bdimg.com/libs/jquery/1.11.3/jquery.min.js"></script>
+<script type="text/javascript" src="tools/jskey/jskey_jquery_navtool.js"></script>
+<script type="text/javascript">
+$(function(){
+	$("#v1").navtool({height:38,bgColor:"#b71d29",bgColorHover:"#000",bgColorMenu:"#000"});
+});
+</script>
+<style type="text/css">
+.nav-down-menu{filter:alpha(opacity=90);-moz-opacity:0.9;-khtml-opacity:0.9;opacity:0.9;}
+
+.webbox{width:1000px;margin:0 auto;}
+.header{width:100%;background-color:#b71d29;height:38px;}
+.header .nav{float:right;width:400px;}
+.search{width:100%;background-color:#fff;height:128px;}/*#bc0015*//*#b71d29*/
+.search .logo{width:250px;height:128px;}/*border-right:2px solid #b71d29;*/
+.search .logo img{margin:33px auto 0 30px;height:62px;}
+.search .bar{margin:46px auto 0 40px;width:500px;}
+.search .search-bar{width:450px;height:37px;line-height:37px;border:none;background-color:#b71d29;overflow:hidden;}
+.search .search-bar input.text{-webkit-appearance:none;width:350px;height:33px;margin:2px 0 0 2px;padding-left:3px;line-height:33px;border:none;background-color:#fff;color:#999;font-size:14px;}
+.search .search-bar input.button{width:88px;height:35px;line-height:35px;border:none;-webkit-appearance:none;background-color:#b71d29;cursor:pointer;color:#fff;font-size:14px;}
+
+.footer{width:100%;}
+
+@media only screen and (min-width:768px) and (max-width:999px){
+}
+@media only screen and (max-width:767px){
+}
+@media only screen and (max-width:480px){
+}
+@media only screen and (max-width:361px){
+}
+</style>
+</head>
+<body>
+<div class="header"><div class="webbox">
+<div class="nav">
+	<div id="v1" class="nav-tool">
+		<div class="nav-up">
+			<ul>
+				<li class="nav-up-selected"><a href="#">首页</a></li>
+				<li data-nav="product"><a href="#">云产品</a></li>
+				<li data-nav="support"><a href="#">帮助与支持</a></li>
+			</ul>
+		</div>
+		<div class="nav-down">
+			<div class="nav-down-menu" data-nav="product">
+				<dl><dt><a href="#">云服务</a></dt>
+					<dd><a href="#">云服务器</a></dd>
+					<dd><a>云数据库</a></dd>
+				</dl>
+				<dl><dt><a>开发者工具</a></dt>
+					<dd><a href="#">移动加速</a></dd>
+					<dd><a href="#">应用加固</a></dd>
+				</dl>
+				<dl><dt><a>开发者服务</a></dt>
+					<dd><a href="#">安全认证服务</a></dd>
+					<dd><a href="#">域名备案</a></dd>
+				</dl>
+			</div>
+			<div class="nav-down-menu" data-nav="support">
+				<dl><dd><a href="#">资料库</a></dd></dl>
+				<dl><dd><a href="#">论坛</a></dd></dl>
+				<dl><dd><a href="#">亿元扶持</a></dd></dl>
+				<dl><dd><a>负载均衡</a></dd></dl>
+			</div>
+		</div>
+	</div>
+</div>
+</div></div>
+<div class="search"><div class="webbox">&nbsp;
+	<div class="left logo"><img src="logo.png" /></div>
+	<div class="left bar">
+		<div class="search-bar"><input type="text" class="left text" id="" name="" value="" /><input type="button" class="left button" id="" name="" value="搜索" /></div>
+	</div>
+</div></div>
+<div class="footer"><div class="webbox"></div></div>
+</body>
 </html>
