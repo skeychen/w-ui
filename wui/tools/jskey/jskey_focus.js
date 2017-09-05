@@ -1,3 +1,6 @@
+/**
+ * 2017-09-05 增加了time设置和手势事件
+ */
 var $jskey = $jskey || {};
 
 
@@ -27,8 +30,15 @@ $jskey.focus = function(o){
 	var box = $(obj).find(".jskey_focus");
 	var len = box.find("ul li").length;
 	var _w = box.width();//获取焦点图的宽度
+	var _isEffect = false;
+	if(o.effect && o.effect != ""){
+		_isEffect = true;
+		box.find("ul li").css({"left":"0","opacity":"0"});
+		box.find("ul li").eq(0).css({"opacity":"1"});
+	}
 	var index = 0;
-	var _timer;// 计时器
+	var _timer = null;// 计时器
+	var _times = o.time || 3000;
 
 	//本例为左右滚动，即所有li元素都是在同一排向左浮动，所以这里需要计算出外围ul元素的宽度
 	//鼠标滑入停止播放，滑出恢复播放
@@ -37,13 +47,29 @@ $jskey.focus = function(o){
 		function(){palybox();}
 	).trigger("mouseleave");
 	var playbtn = function(){};
-	function playbox(){
-		var nowLeft = -index*_w; //根据index值计算ul元素的left值
-		box.find("ul").stop(true,false).animate({"left":nowLeft},300); //通过animate()调整ul元素滚动到计算出的position
+	function playbox(oldIndex){
+		if(_isEffect){
+			if(index != oldIndex){
+				box.find("ul li").eq(oldIndex).animate({"opacity":"0"},800);
+			}
+			box.find("ul li").eq(index).animate({"opacity":"1"}, 500);
+		}
+		else{
+			var nowLeft = -index*_w; //根据index值计算ul元素的left值
+			box.find("ul").stop(true,false).animate({"left":nowLeft},300); //通过animate()调整ul元素滚动到计算出的position
+		}
 		playbtn();
 	}
+	function playprev(){
+		var oidx=index;index-=1;if(index==-1 ){index=len-1;}
+		playbox(oidx);
+	}
+	function playnext(){
+		var oidx=index;index+=1;if(index==len){index=0;}
+		playbox(oidx);
+	}
 	function palybox(){
-		_timer=setInterval(function(){index++;if(index==len){index=0;}playbox();},3000);
+		_timer=setInterval(function(){playnext()}, _times);
 	}
 	if(o.arrow){
 		playbtn = function(){
@@ -61,8 +87,9 @@ $jskey.focus = function(o){
 		box.find(".btnbg").css("opacity",0.2);
 		//为小按钮添加鼠标滑入事件，以显示相应的内容
 		box.find(".btn span").css("opacity",1).mouseover(function(){
+			var oidx = index;
 			index = box.find(".btn span").index(this);
-			playbox();
+			playbox(oidx);
 		}).eq(0).trigger("mouseover");
 	}
 	if(o.button){
@@ -73,18 +100,46 @@ $jskey.focus = function(o){
 			function(){$(this).stop(true,false).animate({"opacity":"0.8"},300);},
 			function(){$(this).stop(true,false).animate({"opacity":"0.2"},300);}
 		);
-		box.find(".prev").click(function(){index-=1;if(index==-1 ){index=len-1;}playbox();});//上一页按钮
-		box.find(".next").click(function(){index+=1;if(index==len){index=0;}    playbox();});//下一页按钮
+		box.find(".prev").click(function(){playprev();});//上一页按钮
+		box.find(".next").click(function(){playnext();});//下一页按钮
 	}
-
 	function x(w){
-		_w = w;
-		box.find("ul").css("width",_w * len);//ul的总宽度
-		box.find("ul li").css("width", _w).css("top", "0").css("height", box.height()).each(function(index){
-			$(this).css("left", (_w * index) + "px");
-		});
-		playbox();
+		if(_isEffect){
+			_w = 0;
+			box.find("ul").css("width", w);//ul的总宽度
+			box.find("ul li").css("width", w).css("top", "0").css("height", box.height());
+		}
+		else{
+			_w = w;
+			box.find("ul").css("width",_w * len);//ul的总宽度
+			box.find("ul li").css("width", _w).css("top", "0").css("height", box.height()).each(function(index){
+				$(this).css("left", (_w * index) + "px");
+			});
+		}
 	}
 	x(_w);
+	palybox();
 	if(o.mode == "fit"){$(window).resize(function(){x($(window).width());});}
+	try{
+		var t, n, r, i;
+		box.on("touchstart", function(e){
+			t = e.originalEvent.touches[0] || e.originalEvent.changedTouches[0];
+			r = t.pageX;
+			i = t.pageY;
+		});
+		box.on("touchmove", function(e){
+			e.preventDefault()
+		});
+		box.on("touchend", function(e){
+			t = e.originalEvent.touches[0] || e.originalEvent.changedTouches[0];
+			n = t.pageX - r;
+			if(n > 0){
+				playprev();
+			}
+			else{
+				playnext();
+			}
+		});
+	}
+	catch(touchEx){}
 };

@@ -75,11 +75,121 @@ $(function(){
 </div>
 </div></div>
 <div class="search"><div class="webbox">&nbsp;
-	<div class="left logo"><img src="logo.png" /></div>
+	<div class="left logo"><img src="o.png" /></div>
 	<div class="left bar">
 		<div class="search-bar"><input type="text" class="left text" id="" name="" value="" /><input type="button" class="left button" id="" name="" value="搜索" /></div>
 	</div>
 </div></div>
 <div class="footer"><div class="webbox"></div></div>
+
+<style type="text/css">
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,input,button,textarea,th,td,form,fieldset{margin:0;padding:0;}
+body{background:#fff;line-height:1.5;font-size:12px;font:12px/1.5;
+font-family:tahoma,arial,"Microsoft YaHei","\5B8B\4F53",sans-serif;color:#363636;background-size:cover;
+-webkit-font-smoothing:antialiased;}
+h1{font-size:18px;}h2{font-size:16px;}h3{font-size:14px;}h4,h5,h6{font-size:100%;}
+button,input,select,textarea{font-size:100%}
+input,button{overflow:visible;vertical-align:middle;outline:none;}
+input,button,textarea,select,optgroup,option{font-family:inherit;font-size:inherit;font-style:inherit;font-weight:inherit;outline:0;}
+button{border:none;}
+address,cite,dfn,em,var,i,b{font-style:normal;font-weight:normal;}
+pre,xmp{white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space:-o-pre-wrap;word-wrap:break-word;}
+textarea{resize:none;}
+img{border:0 none;vertical-align:middle;display:inline-block;}
+ul,ol,dl{list-style-type:none;}
+sub,sup{vertical-align:baseline;}
+/*a{color:#00c;text-decoration:underline;outline:none;}
+a:link,a:visited{color:#00c;outline:none;}
+a:hover,a:active{color:#00c;}*/
+.clear,.clearfix{clear:both;*zoom:1;}
+.clear:after,.clearfix:after{display:block;clear:both;content:"";visibility:hidden;height:0;}
+.left{float:left;}
+.right{float:right;}
+
+
+.webbox{width:1000px;margin:0 auto;clear:both;*zoom:1;}
+.webbox:after{display:block;clear:both;content:"";visibility:hidden;height:0;}
+
+
+
+.table{width:100%;border:none;margin:0 auto;}
+.table dl{height:38px;line-height:1.5em;display:block;clear:both;width:100%;}
+.table dl.title {font-weight:bold;}
+.table dt,
+.table dd{vertical-align:middle;float:left;font-size:14px;height:38px;line-height:38px;vertical-align:middle;text-align:center;background-color:#ffffff;color:#363636;word-wrap:break-word;word-break:break-all;}
+.table dl.title td{color:#24373d;}
+.table dl.last dd{border-bottom:1px solid #ccc;}
+.table dl.odd{}
+.table dl.odd  dd{background-color:#fcfcfc;}
+.table dl.even{}
+.table dl.even dd{background-color:#ffffff;}
+.table dl.over{}
+.table dl.over dd{background-color:#fdfad0;}
+.table dl .c1{width:7%;border-top:1px solid #ccc;border-left:1px solid #ccc;}
+.table dl .c2{width:25%;border-top:1px solid #ccc;border-left:1px solid #ccc;}
+.table dl .c3{width:15%;border-top:1px solid #ccc;border-left:1px solid #ccc;}
+.table dl .c4{width:10%;border-top:1px solid #ccc;border-left:1px solid #ccc;}
+.table dl .c5{width:10%;border-top:1px solid #ccc;border-left:1px solid #ccc;}
+.table dl .c6{width:10%;border-top:1px solid #ccc;border-left:1px solid #ccc;}
+.table dl .c7{width:10%;border-top:1px solid #ccc;border-left:1px solid #ccc;}
+.table dl .c8{width:10%;border-top:1px solid #ccc;border-left:1px solid #ccc;border-right:1px solid #ccc;}
+</style>
+<div class="webbox">
+<div class="table">
+	<dl class="title"">
+		<dt class="c1">选择</dt>
+		<dt class="c2">图片</dt>
+		<dt class="c3">证书</dt>
+		<dt class="c4">长度</dt>
+		<dt class="c5">面宽</dt>
+		<dt class="c6">圈口</dt>
+		<dt class="c7">重量</dt>
+		<dt class="c8">操作</dt>
+	</dl>
+	<dl>
+		<dd class="c1">1</dd>
+		<dd class="c2">2</dd>
+		<dd class="c3">3</dd>
+		<dd class="c4">4</dd>
+		<dd class="c5">5</dd>
+		<dd class="c6">6</dd>
+		<dd class="c7">7</dd>
+		<dd class="c8">8</dd>
+	</dl>
+	<dl>
+		<dd class="c1">1</dd>
+		<dd class="c2">2</dd>
+		<dd class="c3">3</dd>
+		<dd class="c4">4</dd>
+		<dd class="c5">5</dd>
+		<dd class="c6">6</dd>
+		<dd class="c7">7</dd>
+		<dd class="c8">8</dd>
+	</dl>
+	<dl class="last">
+		<dd class="c1">1</dd>
+		<dd class="c2">2</dd>
+		<dd class="c3">3</dd>
+		<dd class="c4">4</dd>
+		<dd class="c5">5</dd>
+		<dd class="c6">6</dd>
+		<dd class="c7">7</dd>
+		<dd class="c8">8</dd>
+	</dl>
+</div>
+</div>
+<script type="text/javascript">
+	$(".table dl").each(function(){
+		if(!$(this).hasClass("title")){
+			$(this).addClass($(this).index()%2 == 0 ? 'even' : 'odd');
+			$(this).bind("mouseover", function(){
+				$(this).removeClass("odd").removeClass("over").addClass("over");
+			});
+			$(this).bind("mouseout", function(){
+				$(this).removeClass("over").addClass($(this).index()%2 == 0 ? 'even' : 'odd');
+			});
+		}
+	});
+</script>
 </body>
 </html>
