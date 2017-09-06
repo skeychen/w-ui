@@ -5,13 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0,minimal-ui"/>
 <title>下拉导航演示</title>
 <script src="http://apps.bdimg.com/libs/jquery/1.11.3/jquery.min.js"></script>
-<script type='text/javascript' src='../../jskey/jskey_focus.js'></script>
 <script type="text/javascript" src="../../jskey/jskey_jquery_navtool.js"></script>
 <style>body{font-family:\"microsoft yahei\";}</style>
 
 <script type="text/javascript">
 $(function(){
-	//$(".nav-tool").navtool({});
 	$("#v1").navtool({});
 });
 </script>
@@ -27,7 +25,7 @@ $(function(){
 			<li><a href="#">行业解决方案</a></li>
 			<li data-nav="weixin"><a href="#">微信建站</a></li>
 			<li data-nav="!support"><a href="#">帮助与支持</a></li>
-			<li><a href="#">合作伙伴</a></li>
+			<li data-nav="!partner"><a href="#">合作伙伴</a></li>
 			<li><a>我只是锚</a></li>
 		</ul>
 	</div>
@@ -51,30 +49,20 @@ $(function(){
 			<dl><dd><a href="#">游戏</a></dd></dl>
 			<dl><dd><a>移动应用</a></dd></dl>
 		</div>
-		<div class="nav-down-menu" data-nav="!support">
+		<div class="nav-down-menu" data-nav="!support" style="width:200px;">
 			<dl><dd><a href="#">资料库</a></dd></dl>
 			<dl><dd><a href="#">论坛</a></dd></dl>
 			<dl><dd><a href="#">亿元扶持</a></dd></dl>
 			<dl><dd><a>负载均衡</a></dd></dl>
 		</div>
-	</div>
-</div>
-</div>
-	<div id="showid1" style="width:100%;height:200px;overflow:hidden;">
-		<div class="jskey_focus">
-			<ul>
-				<li><a href="#" target="_blank"><img src="../../imgs/01.jpg"/></a></li>
-				<li><a href="#" target="_blank"><img src="../../imgs/02.jpg"/></a></li>
-				<li><a href="#" target="_blank"><img src="../../imgs/03.jpg"/></a></li>
-				<li><a href="#" target="_blank"><img src="../../imgs/04.jpg"/></a></li>
-			</ul>
+		<div class="nav-down-menu" data-nav="!partner">
+			<dl><dd><a href="#">供应商</a></dd></dl>
+			<dl><dd><a href="#">加盟商</a></dd></dl>
+			<dl><dd><a href="#">大客户</a></dd></dl>
 		</div>
 	</div>
-	<script type="text/javascript">
-		/*宽度需要适配屏幕宽度时，需要增加mode:"fit"*/
-			$jskey.focus({target:"showid1",mode:"fit",arrow:true,button:true,effect:"fade",time:1000});
-	</script>
-
+</div>
+</div>
 
 
 <br /><br />
