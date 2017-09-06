@@ -93,7 +93,6 @@ o.style = "line-height:" + o.height + "px;height:" + o.height + "px;";
 				}
 			});
 			var dd = m.find(".nav-down").find("[data-nav='"+_n+"']").eq(0);
-			console.log("dd.width()=" + dd.width() + ", m.width()=" + m.width());
 			if(m.auto && dd.width() == m.width()){
 				dd.css({width:m.mywidth});
 			}
