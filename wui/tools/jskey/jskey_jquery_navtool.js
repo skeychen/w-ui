@@ -4,20 +4,20 @@
 
 document.write(
 "<style type='text/css'>" + 
-".nav-tool{position:relative;margin:0 auto;clear:both;width:100%;height:100%;z-index:47;}" +
+".nav-tool{position:relative;margin:0 auto;clear:both;width:100%;height:100%;}" +
 ".nav-tool *{margin:0;padding:0;}" +
 ".nav-tool a,.nav-up a:link{color:#eee;text-decoration:none;display:inline-block;}" +
 ".nav-tool a:link{cursor:pointer;}" +
 ".nav-tool a:hover{color:#fff;text-decoration:none;outline:none;}" +
 
-".nav-up{position:absolute;top:0;width:100%;}" +
+".nav-up{position:absolute;top:0;width:100%;z-index:47;}" +
 ".nav-up ul{diaplay:block;list-style-type:none;}" +
 ".nav-down{position:absolute;width:100%;}" +
-".nav-down .nav-down-menu{z-index:47;position:absolute;top:0px;display:none;}" +
-".nav-down dl{float:left;margin:12px;text-align:center;}" +
-".nav-down dt{margin-bottom:2px;padding-bottom:2px;}" +
+".nav-down .nav-down-menu{z-index:99;position:absolute;top:0px;display:none;}" +
+".nav-down dl{text-align:center;}" +
+".nav-down dt{}" +
 ".nav-down dt a{font-weight:normal;display:block;min-width:66px;}" +
-".nav-down dd{margin-bottom:1px;padding-bottom:1px;}" +
+".nav-down dd{}" +
 ".nav-down dd a{font-weight:normal;display:block;min-width:66px;}" +
 
 ".nav-up{height:38px;background-color:#222;}" +
@@ -26,12 +26,13 @@ document.write(
 ".nav-up .nav-up-hover a{}" +
 ".nav-up .nav-up-hover a:hover{}" +
 ".nav-down{top:38px;left:0px;}" +
-".nav-down .nav-down-menu{width:100%;background-color:#000;}" +
-".nav-down dt{border-bottom:2px solid #aaa;}" +
-".nav-down dt a{padding:0 25px;line-height:35px;height:35x;color:#ddd;font-size:14px;}" +
+".nav-down .nav-down-menu{width:100%;}" +
+".nav-down dl{margin:1px;}" +
+".nav-down dt{}" +
+".nav-down dt a{padding:0 25px;line-height:38px;height:38x;color:#ddd;font-size:14px;}" +
 ".nav-down dt a:hover{}" +
-".nav-down dd{border-bottom:1px dashed #777;}" +
-".nav-down dd a{padding:0 25px;line-height:35px;height:35x;color:#ccc;font-size:14px;}" +
+".nav-down dd{}" +
+".nav-down dd a{padding:0 25px;line-height:35px;height:35x;color:#ccc;font-size:12px;}" +
 ".nav-down dd a:hover{}" +
 "</style>"
 );
@@ -55,8 +56,12 @@ $.fn.navtool = function(o){
 				_t.css({marginLeft:dd.position().left});
 				if(_t.width() == null || _t.width() >= m.width()){
 					_t.css({width:dd.width()});
+					_t.children("dl").css({margin:"1"}).find("a").css({padding:"0"});
 				}
 			}
+		}
+		else{
+			_t.children("dl").css({float:"left"});
 		}
 	});
 	if(!o.close){
