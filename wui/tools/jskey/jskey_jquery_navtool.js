@@ -4,8 +4,8 @@
 
 document.write(
 "<style type='text/css'>" + 
-".nav-tool{position:relative;margin:0 auto;clear:both;width:100%;height:100%;}" +
-".nav-tool *{margin:0;padding:0;font-family:arial,\"microsoft yahei\",\"\u5B8B\u4F53\"}" +
+".nav-tool{position:relative;margin:0 auto;clear:both;width:100%;height:100%;z-index:47;}" +
+".nav-tool *{margin:0;padding:0;}" +
 ".nav-tool a,.nav-up a:link{color:#eee;text-decoration:none;display:inline-block;}" +
 ".nav-tool a:link{cursor:pointer;}" +
 ".nav-tool a:hover{color:#fff;text-decoration:none;outline:none;}" +
@@ -28,10 +28,10 @@ document.write(
 ".nav-down{top:38px;left:0px;}" +
 ".nav-down .nav-down-menu{width:100%;background-color:#000;}" +
 ".nav-down dt{border-bottom:2px solid #aaa;}" +
-".nav-down dt a{padding:0 22px;line-height:35px;height:35x;color:#ddd;font-size:14px;}" +
+".nav-down dt a{padding:0 25px;line-height:35px;height:35x;color:#ddd;font-size:14px;}" +
 ".nav-down dt a:hover{}" +
 ".nav-down dd{border-bottom:1px dashed #777;}" +
-".nav-down dd a{padding:0 22px;line-height:35px;height:35x;color:#ccc;font-size:14px;}" +
+".nav-down dd a{padding:0 25px;line-height:35px;height:35x;color:#ccc;font-size:14px;}" +
 ".nav-down dd a:hover{}" +
 "</style>"
 );
@@ -43,6 +43,8 @@ o = $.extend({height:38,bgColor:"#202833",bgColorHover:"#344157",bgColorMenu:"#3
 o.style = "line-height:" + o.height + "px;height:" + o.height + "px;";
 $(this).each(function(){
 	var m = $(this), ts = [];
+	m.mywidth = "100%";
+	m.myleft = 0;
 	m.find(".nav-up").css("height", o.height + "px").css("background-color", o.bgColor);
 	m.find(".nav-up a").each(function(){$(this).attr({"style":o.style});});
 	m.find(".nav-down").css("top", o.height + "px");
@@ -67,6 +69,15 @@ $(this).each(function(){
 	function m_in(){
 		var _t = $(this);
 		var _n = _t.attr("data-nav") || "";
+		var _w = _n.indexOf("!") == 0;
+		if(_w){
+			m.mywidth = _t.width();
+			m.myleft = _t.position().left;
+		}
+		else{
+			m.mywidth = "100%";
+			m.myleft = 0;
+		}
 		clearTimeout(ts[_n+"_timer"]);
 		ts[_n+"_timer"] = setTimeout(function(){
 			if(!o.close){m.find(".nav-down").find("[data-nav]").slideUp(0);}
@@ -78,7 +89,7 @@ $(this).each(function(){
 					$(this).removeClass("nav-up-hover").attr("style", "");
 				}
 			});
-			m.find(".nav-down").find("[data-nav='"+_n+"']").stop(true,true).slideDown(o.close ? 200 : 0	);
+			m.find(".nav-down").find("[data-nav='"+_n+"']").css({width:m.mywidth,marginLeft:m.myleft}).stop(true,true).slideDown(o.close ? 200 : 0	);
 		}, 150);
 	}
 	m.find(".nav-up li").hover(m_in, m_out);

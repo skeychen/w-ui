@@ -1,15 +1,12 @@
-/**
- * 2017-09-05 增加了time设置和手势事件
- */
 var $jskey = $jskey || {};
 
 
 
 document.write(
 	"<style type='text/css'>" + 
-		".jskey_focus{width:100%;height:100%;overflow:hidden;position:relative;margin:0 auto;padding:0;}" +
+		".jskey_focus{width:100%;height:100%;overflow:hidden;position:relative;margin:0 auto;padding:0;z-index:0;}" +
 		".jskey_focus ul," +
-		".jskey_focus li{list-style-type:none;height:100%;list-style:none;margin:0;padding:0;position:absolute;text-align:center;}" +
+		".jskey_focus li{list-style-type:none;height:100%;list-style:none;margin:0;padding:0;position:absolute;text-align:center;display:block;z-index:-1;}" +
 		".jskey_focus ul li{overflow:hidden;}" +
 		".jskey_focus ul li img{border:none;}" +
 		".jskey_focus ul li div{position:absolute;overflow:hidden;}" +
@@ -38,7 +35,6 @@ $jskey.focus = function(o){
 	}
 	var index = 0;
 	var _timer = null;// 计时器
-	var _times = o.time || 3000;
 
 	//本例为左右滚动，即所有li元素都是在同一排向左浮动，所以这里需要计算出外围ul元素的宽度
 	//鼠标滑入停止播放，滑出恢复播放
@@ -69,7 +65,7 @@ $jskey.focus = function(o){
 		playbox(oidx);
 	}
 	function palybox(){
-		_timer=setInterval(function(){playnext()}, _times);
+		_timer=setInterval(function(){playnext()},3000);
 	}
 	if(o.arrow){
 		playbtn = function(){
