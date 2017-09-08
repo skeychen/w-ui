@@ -20,7 +20,7 @@ document.write(
 ".nav-down dd{}" +
 ".nav-down dd a{font-weight:normal;display:block;min-width:66px;}" +
 
-".nav-up{height:38px;background-color:#222;}" +
+".nav-up{height:38px;}" +
 ".nav-up li{float:left;background-color:inherit;}" +
 ".nav-up a{line-height:38px;height:38px;padding:0 26px;font-weight:normal;font-size:14px;}" +
 ".nav-up .nav-up-hover a{}" +
@@ -75,6 +75,7 @@ $.fn.navtool = function(o){
 		var _n = $(this).attr("data-nav") || "";
 		if(o.close){
 			clearTimeout(ts[_n+"_timer"]);
+			clearTimeout(ts["x_timer"]);
 			ts[_n+"_timer"] = setTimeout(function(){
 				m.find(".nav-up li").each(function(){$(this).attr("style", "").removeClass("nav-up-hover");});
 				m.find(".nav-down").find("[data-nav='"+_n+"']").stop(true,true).slideUp(200);
@@ -85,6 +86,7 @@ $.fn.navtool = function(o){
 		var _t = $(this);
 		var _n = _t.attr("data-nav") || "";
 		clearTimeout(ts[_n+"_timer"]);
+		clearTimeout(ts["x_timer"]);
 		ts[_n+"_timer"] = setTimeout(function(){
 			if(!o.close){m.find(".nav-down").find("[data-nav]").slideUp(0);}
 			m.find(".nav-up li").each(function(){
