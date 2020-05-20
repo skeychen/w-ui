@@ -167,21 +167,23 @@ $jskey.Numx.prototype.to = function(v){
 };
 // 加1
 $jskey.Numx.prototype.toUp = function(E, val){
-	if(val == 0){return;}
+	if(val == 0){$("#" + E.config.idx + 0).stop().animate({marginTop:("-"+E.config.numArray[0]*E.config.height+"px")}, 10);return;}
 	var i = 0;
 	while(i < E.config.maxlen){
 		var v = E.config.numArray[i];
 		var o = $("#" + E.config.idx + i);
 		if(v == 9){
 			E.config.numArray[i] = 0;
-			o.animate({marginTop:("-"+(E.config.numArray[i]*E.config.height)+"px")}, i==0 ? 10 : Math.pow(10, i+1));
+			o.animate({marginTop:("-"+E.config.fullHeight+"px")}, i==0 ? 10 : Math.pow(10, i+1));
 			i++;
 		}else{
 			if(v == 0){
 				o.css("marginTop", "0px");// 复原回上0
 			}
 			E.config.numArray[i] = E.config.numArray[i]+1;
+			
 			o.animate({marginTop:("-"+(E.config.numArray[i]*E.config.height)+"px")}, i==0 ? 10 : Math.pow(10, i+1));
+			
 			break;
 		}
 	}
@@ -191,7 +193,7 @@ $jskey.Numx.prototype.toUp = function(E, val){
 };
 // 减1
 $jskey.Numx.prototype.toDown = function(E, val){
-	if(val == 0){return;}
+	if(val == 0){$("#" + E.config.idx + 0).stop().animate({marginTop:("-"+E.config.numArray[0]*E.config.height+"px")}, 10);return;}
 	var i = 0;
 	while(i < E.config.maxlen){
 		var v = E.config.numArray[i];
@@ -199,11 +201,11 @@ $jskey.Numx.prototype.toDown = function(E, val){
 		if(v == 0){
 			o.css("marginTop", "-"+E.config.fullHeight+"0px");// 复原回下0
 			E.config.numArray[i] = 9;
-			o.animate({marginTop:("-"+(E.numArray[i]*E.config.height)+"px")}, i==0 ? 10 : Math.pow(10, i+1));
+			o.animate({marginTop:("-"+(E.numArray[i]*E.config.height)+"px")}, i==0 ? 1 : Math.pow(8, i+1));
 			i++;
 		}else{
 			E.config.numArray[i] = E.config.numArray[i]-1;
-			o.animate({marginTop:("-"+(E.config.numArray[i]*E.config.height)+"px")}, i==0 ? 10 : Math.pow(10, i+1));
+			o.animate({marginTop:("-"+(E.config.numArray[i]*E.config.height)+"px")}, i==0 ? 1 : Math.pow(8, i+1));
 			break;
 		}
 	}
