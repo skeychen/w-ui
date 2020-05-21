@@ -62,128 +62,116 @@ for(var i = 0; i <= 9; i++){
 }
 allnum = allnum + allnum;
 $jskey.Numx = function(p){
-	this.config = p || {};// {numArray,num,maxlen,idx}
-	this.config.i = count++;
+	this.config = p || {};
+	this.k = count++;
+	this.numArray = [];
+	this.num = 0;
+	this.maxlen = 16;
+	this.kid = "";
 	this.numArray = [];
 	this.o = null;
 	this.config_();
 	this.init_();
 };
 $jskey.Numx.prototype.config_ = function(){
-	var C = this.config;
+	var E = this;
 	var d = {dom:{tag:"div", style:{className:"jskey_numx"}, item:{tag:"div", style:{className:"numxbox"}}}};
-	C = C||{};
-	$jskey.extend(C, d);
+	E.config = E.config||{};
+	$jskey.extend(E.config, d);
+	var C = E.config;
 	
 	C.num = C.num||0;
 	if(C.num < 0){C.num = 0;}
+	E.num = C.num;
 	
 	C.maxlen = C.maxlen||16;
 	if(C.maxlen <= 0){C.maxlen = 16;}
-	
-	C.times = C.times||500;
-	if(C.times < 0){C.times = 500;}
+	E.maxlen = C.maxlen;
 	
 	C.height = C.height||80;
 	if(C.height <= 0){C.height = 80;}
-	C.fullHeight = C.height*10;
+	E.height = C.height;
 	
-	C.numArray = [];
+	E.fullHeight = C.height*10;
+	
+	E.numArray = [];
+	E.kid = "jskey_"+ E.k +"_numx";
 	C.dom.tag = C.dom.tag.toLowerCase();
 	C.dom.item.tag = C.dom.item.tag.toLowerCase();
-	this.o = C.target || C.object || C.cont;
-	switch(typeof this.o === 'object' ? (this.o.length === undefined ? 2 : 3) : 1){
+	E.o = C.target || C.object || C.cont;
+	switch(typeof E.o === 'object' ? (E.o.length === undefined ? 2 : 3) : 1){
 		case 3:break;// jquery对象
-		case 1:this.o = $jskey.$(this.o);
-		case 2:this.o.html = function(v){this.innerHTML = v;};break;
+		case 1:E.o = $jskey.$(E.o);
+		case 2:E.o.html = function(v){this.innerHTML = v;};break;
 	}
 };
 //初次渲染
 $jskey.Numx.prototype.init_ = function(){
-	var C = this.config;
-	var maxlen = C.maxlen;
-	var vstr = C.num + "";
-	var arr = C.numArray;
+	var E = this;
+	var vstr = E.num + "";
 	var vlen = vstr.length;
-	if(vlen > maxlen){
-		vstr = vstr.substring(maxlen - vlen, vlen);
+	if(vlen > E.maxlen){
+		vstr = vstr.substring(E.maxlen - vlen, vlen);
 		vlen = vstr.length;
 	}
-	for(var i = 0; i < vlen; i++){
-		var j = vlen - i;
-		arr.push(parseInt(vstr.substring(j-1, j)));// 个位数开始
+	var arr = E.numArray;// 个位数开始
+	for(var i = 0; i < vlen; i++){var j = vlen - i;
+		arr.push(parseInt(vstr.substring(j-1, j)));
 	}
-	// 没有数据的补0
-	if(maxlen > vlen){
-		for(var i = vlen; i < maxlen; i++){
-			arr.push(0);
-		}
-	}
-	var C = this.config;
-	C.idx = "jskey_"+ C.i +"_numx";
+	if(E.maxlen > vlen){for(var i = vlen; i < E.maxlen; i++){arr.push(0);}}// 没有数据的补0
+	E.kid = "jskey_"+ E.k +"_numx";
+	
+	var D = E.config.dom;
 	var H = '';
-	for(var i = (maxlen - 1); i >= 0; i--){
-		var x = '<div id="' + C.idx + i +'" class="numx" style="margin-top:-'+(arr[i]*C.height)+'px">'+allnum+'</div>';
-		H += '<'+C.dom.item.tag+' class="'+C.dom.item.style.className+'" style="line-height:'+C.height+'px;height:'+C.height+'px;">' + x + '</'+C.dom.item.tag+'>';
+	for(var i = (E.maxlen - 1); i >= 0; i--){
+		var x = '<div id="' + E.kid + i +'" class="numx" style="margin-top:-'+(arr[i]*E.height)+'px">'+allnum+'</div>';
+		H += '<'+D.item.tag+' class="'+D.item.style.className+'" style="line-height:'+E.height+'px;height:'+E.height+'px;">' + x + '</'+D.item.tag+'>';
 	}
-	H = '<'+C.dom.tag+' onselectstart="return false;" class="'+C.dom.style.className+'">' + H + '</'+C.dom.tag+'>';
+	H = '<'+D.tag+' onselectstart="return false;" class="'+D.style.className+'">' + H + '</'+D.tag+'>';
 	this.o.html(H);
 };
 // 加减到指定数字
 $jskey.Numx.prototype.to = function(v){
 	var E = this;
-	var C = E.config;
-	var maxlen = C.maxlen;
-	var varr = [];
-	for(var i = 0; i < maxlen; i++){varr.push(0);}
 	
 	var vstr = v + "";
 	var vlen = vstr.length;
-	if(vlen > maxlen){
-		vstr = vstr.substring(maxlen - vlen, vlen);
+	if(vlen > E.maxlen){
+		vstr = vstr.substring(E.maxlen - vlen, vlen);
 		vlen = vstr.length;
 	}
 	
-	for(var i = 0; i < vlen; i++){
-		var j = vlen - i;
+	var varr = [];
+	for(var i = 0; i < E.maxlen; i++){varr.push(0);}
+	for(var i = 0; i < vlen; i++){var j = vlen - i;
 		varr[i] = parseInt(vstr.substring(j-1, j));
 	}
-	var val = v - C.num;
-	var temp_fn = function(E, v, varr){
-		E.moveUp(E, v, varr);
-	};
 	
-	C.tmpArray = varr;
-	C.num = v;
-	if(val == 0){
-	}
-	else if(val > 0){
-		E.toUp(E, val);
-	}
-	else{
-		E.toDown(E, -1*val);
-	}
-	
+	var val = v - E.num;
+	E.num = v;
+	if(val == 0){}else if(val > 0){E.toUp(E, val);}else{E.toDown(E, -1*val);}
 };
 // 加1
 $jskey.Numx.prototype.toUp = function(E, val){
-	if(val == 0){$("#" + E.config.idx + 0).stop().animate({marginTop:("-"+E.config.numArray[0]*E.config.height+"px")}, 10);return;}
+	if(val == 0){return;}
 	var i = 0;
-	while(i < E.config.maxlen){
-		var v = E.config.numArray[i];
-		var o = $("#" + E.config.idx + i);
+	while(i < E.maxlen){
+		var v = E.numArray[i];
+		var o = $("#" + E.kid + i);
 		if(v == 9){
-			E.config.numArray[i] = 0;
-			o.animate({marginTop:("-"+E.config.fullHeight+"px")}, i==0 ? 10 : Math.pow(10, i+1));
+			E.numArray[i] = 0;
+			if(i == 0){
+				o.stop();
+			}
+			o.animate({marginTop:("-"+E.fullHeight+"px")}, i == 0 ? 1 : Math.pow(5, i+1));
 			i++;
 		}else{
-			if(v == 0){
-				o.css("marginTop", "0px");// 复原回上0
+			if(v == 0){o.css("marginTop", "0px");}// 复原回上0
+			E.numArray[i] = E.numArray[i]+1;
+			if(i == 0){
+				o.stop();
 			}
-			E.config.numArray[i] = E.config.numArray[i]+1;
-			
-			o.animate({marginTop:("-"+(E.config.numArray[i]*E.config.height)+"px")}, i==0 ? 10 : Math.pow(10, i+1));
-			
+			o.animate({marginTop:("-"+(E.numArray[i]*E.height)+"px")}, i == 0 ? 1 : Math.pow(5, i+1));
 			break;
 		}
 	}
@@ -193,19 +181,19 @@ $jskey.Numx.prototype.toUp = function(E, val){
 };
 // 减1
 $jskey.Numx.prototype.toDown = function(E, val){
-	if(val == 0){$("#" + E.config.idx + 0).stop().animate({marginTop:("-"+E.config.numArray[0]*E.config.height+"px")}, 10);return;}
+	if(val == 0){return;}
 	var i = 0;
-	while(i < E.config.maxlen){
-		var v = E.config.numArray[i];
-		var o = $("#" + E.config.idx + i);
+	while(i < E.maxlen){
+		var v = E.numArray[i];
+		var o = $("#" + E.kid + i);
 		if(v == 0){
-			o.css("marginTop", "-"+E.config.fullHeight+"0px");// 复原回下0
-			E.config.numArray[i] = 9;
-			o.animate({marginTop:("-"+(E.numArray[i]*E.config.height)+"px")}, i==0 ? 1 : Math.pow(8, i+1));
+			o.css("marginTop", "-"+E.fullHeight+"0px");// 复原回下0
+			E.numArray[i] = 9;
+			o.animate({marginTop:("-"+(E.numArray[i]*E.height)+"px")}, i == 0 ? 1 : Math.pow(5, i+1));
 			i++;
 		}else{
-			E.config.numArray[i] = E.config.numArray[i]-1;
-			o.animate({marginTop:("-"+(E.config.numArray[i]*E.config.height)+"px")}, i==0 ? 1 : Math.pow(8, i+1));
+			E.numArray[i] = E.numArray[i]-1;
+			o.animate({marginTop:("-"+(E.numArray[i]*E.height)+"px")}, i == 0 ? 1 : Math.pow(5, i+1));
 			break;
 		}
 	}
@@ -216,86 +204,58 @@ $jskey.Numx.prototype.toDown = function(E, val){
 // 加减到指定数字
 $jskey.Numx.prototype.move = function(v){
 	var E = this;
-	var C = E.config;
-	var maxlen = C.maxlen;
-	var n = C.num;
-	var varr = [];
-	for(var i = 0; i < maxlen; i++){varr.push(-1);}
-	
 	var vstr = v + "";
 	var vlen = vstr.length;
-	if(vlen > maxlen){
-		vstr = vstr.substring(maxlen - vlen, vlen);
+	if(vlen > E.maxlen){
+		vstr = vstr.substring(E.maxlen - vlen, vlen);
 		vlen = vstr.length;
 	}
-	
-	for(var i = 0; i < vlen; i++){
-		var j = vlen - i;
+	var varr = [];
+	for(var i = 0; i < E.maxlen; i++){varr.push(-1);}
+	for(var i = 0; i < vlen; i++){var j = vlen - i;
 		varr[i] = parseInt(vstr.substring(j-1, j));
 	}
-	var val = v - n;
-	var temp_fn = function(E, v, varr){
-		E.moveUp(E, v, varr);
-	};
-	if(val > 0){
-		E.moveUp(E, v, varr);
-	}
-	else{
-		E.moveDown(E, v, varr);
-	}
+	var val = v - E.num;
+	if(val == 0){}else if(val > 0){E.moveUp(E, v, varr);}else{E.moveDown(E, v, varr);}
 };
 // 加到指定数字
 $jskey.Numx.prototype.moveUp = function(E, v, varr){
-	var C = E.config;
-	if(i >= C.maxlen){C.numArray = varr;C.num = v;return;}
 	var i = 0;
-	while(i < C.maxlen){
-		if(varr[i] == -1){
-			for(var j=i; j<C.maxlen; j++){// 加大了的数，高位肯定都是0
-				varr[j] = 0;
-			}
-			break;
-		}
-		else if(varr[i] == C.numArray[i]){
-		}
-		else{
-			var o = $("#" + C.idx + i);
+	while(i < E.maxlen){
+		if(varr[i] == -1){// 加大了的数，高位肯定都是0
+			for(var j=i; j<E.maxlen; j++){varr[j] = 0;}break;
+		}else if(varr[i] == E.numArray[i]){
+		}else{
+			var o = $("#" + E.kid + i);
 			var top = parseInt(o.css("marginTop").replace('px', '').replace('-', ''));// 取正
 			var tmp = varr[i];
-			if(top > C.fullHeight){o.css("marginTop", "-"+(top+C.fullHeight)+"px");}// 复位上
-			if(tmp < C.numArray[i]){tmp = tmp + 10;}// 滚动到上面的数字
-			o.animate({marginTop:("-"+(tmp*C.height)+"px")}, 100, function(){});
+			if(top > E.fullHeight){o.css("marginTop", "-"+(top-E.fullHeight)+"px");}// 复位上
+			if(tmp < E.numArray[i]){tmp = tmp+10;}// 滚动到下面的数字
+			o.animate({marginTop:("-"+(tmp*E.height)+"px")}, 300, function(){});
 		}
 		i = i+1;
 	}
-	C.numArray = varr;
-	C.num = v;
+	E.numArray = varr;
+	E.num = v;
 };
 // 减到指定数字
 $jskey.Numx.prototype.moveDown = function(E, v, varr){
-	var C = E.config;
-	if(i < 0){C.numArray = varr;C.num = v;return;}
 	var i = E.maxlen - 1;
 	while(i >= 0){
-		if(varr[i] == -1){
-			var o = $("#" + C.idx + i);
-			o.css("marginTop", "0px");
-			varr[i] = 0;
-		}
-		else if(varr[i] == C.numArray[i]){
-		}
-		else{
-			var o = $("#" + C.idx + i);
+		if(varr[i] == -1){var o = $("#"+E.kid+i);o.css("marginTop", "0px");varr[i] = 0;
+		}else if(varr[i] == E.numArray[i]){
+		}else{
+			var o = $("#"+E.kid+i);
 			var top = parseInt(o.css("marginTop").replace('px', '').replace('-', ''));// 取正
 			var tmp = varr[i];
-			if(top < C.fullHeight){o.css("marginTop", "-"+(top+C.fullHeight)+"px");}// 复位下
-			if(tmp > narr[i]){tmp = tmp + 10;}// 滚动到上面的数字
-			o.animate({marginTop:("-"+(tmp*C.height)+"px")}, 100, function(){});
+			if(top < E.fullHeight){o.css("marginTop", "-"+(top+E.fullHeight)+"px");}// 复位下
+			if(tmp > E.numArray[i]){tmp = tmp + 10;}// 滚动到上面的数字
+			o.animate({marginTop:("-"+(tmp*E.height)+"px")}, 300, function(){});
 		}
 		i = i-1;
 	}
-	C.numArray = varr;
-	C.num = v;
+	E.numArray = varr;
+	E.num = v;
 };
 
 
