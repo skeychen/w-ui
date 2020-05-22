@@ -180,15 +180,34 @@ $jskey.Numx.prototype.move = function(v){
 	}
 
 	var j = 0;
+	console.log("val ======= " + val);
 	while(j <= maxIndex){// 复位加上/减下
 		var top = E.numArray[j]*E.height+fixh;
 		oList[j].jo.css("marginTop", "-"+top+"px");
 		oList[j].fixtop = top;
-		var myv = parseInt(Math.abs(val)/Math.pow(10, j));
-		if(myv > 100){
-			myv = myv%10;
-			myv = myv == 0 ? 100 : (myv + 90);
+		
+		var myv = 0;
+		if(val > 0){
+			myv = E.numArray[j]>varr[j] ? varr[j] + 10 - E.numArray[j] : varr[j] - E.numArray[j];
 		}
+		else{
+			myv = E.numArray[j]>varr[j] ? E.numArray[j] - varr[j] : E.numArray[j] + 10 - varr[j];
+		}
+		if(maxIndex > j){
+			if((maxIndex - j) > 1){
+				myv = myv == 0 ? 100 : (myv + 90);
+			}
+			else{
+				if(val > 0){
+					myv = (varr[j+1]*10+varr[j]) - (E.numArray[j+1]*10+E.numArray[j]);
+				}
+				else{
+					myv = (E.numArray[j+1]*10+E.numArray[j]) - (varr[j+1]*10+varr[j]);
+				}
+			}
+		}
+		
+		console.log(myv);
 		var h = 0;
 		if(val > 0){
 			h = oList[j].fixtop + (myv*E.height);
@@ -217,7 +236,7 @@ $jskey.Numx.prototype.move = function(v){
 
 	j = maxIndex - 1;
 	if(j > -1){
-		oList[j].jo.animate({marginTop:("-"+oList[j].fixh+"px")}, E.times*1.5, function(){
+		oList[j].jo.animate({marginTop:("-"+oList[j].fixh+"px")}, E.times*2, function(){
 			this.fn();
 		});
 	}
