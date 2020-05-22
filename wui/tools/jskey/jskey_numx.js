@@ -56,11 +56,12 @@ $jskey.numx({num:0,maxlen:0,height:200,times:1000,
 });
 */
 var count = 0;
-var allnum = "";
+var tennum = "";
 for(var i = 0; i <= 9; i++){
-	allnum += '<div class="num">'+ i +'</div>';
+	tennum += '<div class="num">'+ i +'</div>';
 }
-allnum = allnum + allnum;
+var allnum = tennum + tennum + tennum + tennum + tennum + tennum + tennum + tennum + tennum + tennum + tennum;
+// allnum = allnum + allnum + allnum + allnum + allnum;
 $jskey.Numx = function(p){
 	this.config = p || {};
 	this.k = count++;
@@ -124,14 +125,22 @@ $jskey.Numx.prototype.init_ = function(){
 	if(E.maxlen > vlen){for(var i = vlen; i < E.maxlen; i++){arr.push(0);}}// 没有数据的补0
 	E.kid = "jskey_"+ E.k +"_numx";
 	
+	var maxi = E.maxlen - 1;
 	var D = E.config.dom;
 	var H = '';
-	for(var i = (E.maxlen - 1); i >= 0; i--){
+	for(var i = maxi; i >= 0; i--){
 		var x = '<div id="' + E.kid + i +'" class="numx" style="margin-top:-'+(arr[i]*E.height)+'px">'+allnum+'</div>';
 		H += '<'+D.item.tag+' class="'+D.item.style.className+'" style="line-height:'+E.height+'px;height:'+E.height+'px;">' + x + '</'+D.item.tag+'>';
 	}
 	H = '<'+D.tag+' onselectstart="return false;" class="'+D.style.className+'">' + H + '</'+D.tag+'>';
 	this.o.html(H);
+	var nowbox = document.getElementById(E.kid + maxi);
+	nowbox.box = null;
+	for(var i = maxi - 1; i >= 0; i--){
+		var box = document.getElementById(E.kid + i);
+		nowbox.box = box;
+		nowbox = box;
+	}
 };
 // 加减到指定数字
 $jskey.Numx.prototype.move = function(v){
@@ -155,27 +164,66 @@ $jskey.Numx.prototype.move = function(v){
 		if(E.numArray[i] == varr[i]){continue;}
 		maxIndex = i;break;
 	}
-	if(val > 0){
-		var i = 0;
-		while(i <= maxIndex){
-			var o = $("#" + E.kid + i);
-			o.css("marginTop", "-"+(E.numArray[i]*E.height)+"px");// 复位上
-			var tmp = varr[i];
-			if(E.numArray[i] >= tmp){tmp = tmp + 10;}
-			o.animate({marginTop:("-"+(tmp*E.height)+"px")}, E.times * (maxIndex - i), function(){});
-			i = i+1;
-		}
-	}else{
-		var i = maxIndex;
-		while(i >= 0){
-			var o = $("#" + E.kid + i);
-			o.css("marginTop", "-"+((E.numArray[i]+10)*E.height)+"px");// 复位下
-			var tmp = varr[i];
-			if(E.numArray[i] > tmp){tmp = tmp + 10;}
-			o.animate({marginTop:("-"+(tmp*E.height)+"px")}, E.times * (maxIndex - i), function(){});
-			i = i-1;
-		}
+
+	var maxtimes = E.times * maxIndex;
+
+	var oList = [];
+	for(var i = 0; i <= maxIndex; i++){
+		oList[i] = document.getElementById(E.kid + i);
+		var o = $(oList[i]);
+		oList[i].jo = o;
 	}
+	var maxheight = 100 * E.height;
+	var fixh = 0;
+	if(val < 0){
+		fixh = maxheight;
+	}
+
+	var j = 0;
+	while(j <= maxIndex){// 复位加上/减下
+		var top = E.numArray[j]*E.height+fixh;
+		oList[j].jo.css("marginTop", "-"+top+"px");
+		oList[j].fixtop = top;
+		var myv = parseInt(Math.abs(val)/Math.pow(10, j));
+		if(myv > 100){
+			myv = myv%10;
+			myv = myv == 0 ? 100 : (myv + 90);
+		}
+		var h = 0;
+		if(val > 0){
+			h = oList[j].fixtop + (myv*E.height);
+		}
+		else{
+			h = oList[j].fixtop - (myv*E.height);
+		}
+		oList[j].fixh = h;
+		oList[j].times = E.times;
+		oList[j].fn = function(){
+			if(this.box){
+				this.box.jo.stop(true, false).animate({marginTop:("-"+this.box.fixh+"px")}, this.box.times, function(){
+					this.fn();
+				});
+			}
+		};
+		j++;
+	}
+
+
+	j = 0;
+	while(j < maxIndex - 1){
+		oList[j].jo.animate({marginTop:("-"+oList[j].fixh+"px")}, maxtimes);
+		j++;
+	}
+
+	j = maxIndex - 1;
+	if(j > -1){
+		oList[j].jo.animate({marginTop:("-"+oList[j].fixh+"px")}, E.times*1.5, function(){
+			this.fn();
+		});
+	}
+	j = maxIndex;
+	oList[j].jo.animate({marginTop:("-"+oList[j].fixh+"px")}, E.times);
+	
 	E.numArray = varr;
 	E.num = v;
 };
