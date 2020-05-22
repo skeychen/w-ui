@@ -44,7 +44,7 @@ document.write(
 );
 */
 /*
-$jskey.numx({num:0,maxlen:0,height:200,times:300,
+$jskey.numx({num:0,maxlen:0,height:200,times:1000,
 	target:'p',// 放置翻页控件信息的html的DOM的id
     dom:{
     	"tag":"div", "style":{"className":"jskey_numx"},
@@ -70,6 +70,7 @@ $jskey.Numx = function(p){
 	this.kid = "";
 	this.numArray = [];
 	this.o = null;
+	this.times = 1000;
 	this.config_();
 	this.init_();
 };
@@ -92,7 +93,9 @@ $jskey.Numx.prototype.config_ = function(){
 	if(C.height <= 0){C.height = 80;}
 	E.height = C.height;
 	
-	E.fullHeight = C.height*10;
+	C.times = C.times||1000;
+	if(C.times <= 0){C.times = 1000;}
+	E.times = C.times;
 	
 	E.numArray = [];
 	E.kid = "jskey_"+ E.k +"_numx";
@@ -131,77 +134,6 @@ $jskey.Numx.prototype.init_ = function(){
 	this.o.html(H);
 };
 // 加减到指定数字
-$jskey.Numx.prototype.to = function(v){
-	var E = this;
-	
-	var vstr = v + "";
-	var vlen = vstr.length;
-	if(vlen > E.maxlen){
-		vstr = vstr.substring(E.maxlen - vlen, vlen);
-		vlen = vstr.length;
-	}
-	
-	var varr = [];
-	for(var i = 0; i < E.maxlen; i++){varr.push(0);}
-	for(var i = 0; i < vlen; i++){var j = vlen - i;
-		varr[i] = parseInt(vstr.substring(j-1, j));
-	}
-	
-	var val = v - E.num;
-	E.num = v;
-	if(val == 0){}else if(val > 0){E.toUp(E, val);}else{E.toDown(E, -1*val);}
-};
-// 加1
-$jskey.Numx.prototype.toUp = function(E, val){
-	if(val == 0){return;}
-	var i = 0;
-	while(i < E.maxlen){
-		var v = E.numArray[i];
-		var o = $("#" + E.kid + i);
-		if(v == 9){
-			E.numArray[i] = 0;
-			if(i == 0){
-				o.stop();
-			}
-			o.animate({marginTop:("-"+E.fullHeight+"px")}, i == 0 ? 1 : Math.pow(5, i+1));
-			i++;
-		}else{
-			if(v == 0){o.css("marginTop", "0px");}// 复原回上0
-			E.numArray[i] = E.numArray[i]+1;
-			if(i == 0){
-				o.stop();
-			}
-			o.animate({marginTop:("-"+(E.numArray[i]*E.height)+"px")}, i == 0 ? 1 : Math.pow(5, i+1));
-			break;
-		}
-	}
-	val--;
-	E.toUp(E, val);
-	return;
-};
-// 减1
-$jskey.Numx.prototype.toDown = function(E, val){
-	if(val == 0){return;}
-	var i = 0;
-	while(i < E.maxlen){
-		var v = E.numArray[i];
-		var o = $("#" + E.kid + i);
-		if(v == 0){
-			o.css("marginTop", "-"+E.fullHeight+"0px");// 复原回下0
-			E.numArray[i] = 9;
-			o.animate({marginTop:("-"+(E.numArray[i]*E.height)+"px")}, i == 0 ? 1 : Math.pow(5, i+1));
-			i++;
-		}else{
-			E.numArray[i] = E.numArray[i]-1;
-			o.animate({marginTop:("-"+(E.numArray[i]*E.height)+"px")}, i == 0 ? 1 : Math.pow(5, i+1));
-			break;
-		}
-	}
-	val--;
-	E.toDown(E, val);
-	return;
-};
-// 加减到指定数字
 $jskey.Numx.prototype.move = function(v){
 	var E = this;
 	var vstr = v + "";
@@ -211,52 +143,43 @@ $jskey.Numx.prototype.move = function(v){
 		vlen = vstr.length;
 	}
 	var varr = [];
-	for(var i = 0; i < E.maxlen; i++){varr.push(-1);}
+	for(var i = 0; i < E.maxlen; i++){varr.push(0);}
 	for(var i = 0; i < vlen; i++){var j = vlen - i;
 		varr[i] = parseInt(vstr.substring(j-1, j));
 	}
 	var val = v - E.num;
-	if(val == 0){}else if(val > 0){E.moveUp(E, v, varr);}else{E.moveDown(E, v, varr);}
-};
-// 加到指定数字
-$jskey.Numx.prototype.moveUp = function(E, v, varr){
-	var i = 0;
-	while(i < E.maxlen){
-		if(varr[i] == -1){// 加大了的数，高位肯定都是0
-			for(var j=i; j<E.maxlen; j++){varr[j] = 0;}break;
-		}else if(varr[i] == E.numArray[i]){
-		}else{
+	if(val == 0){return;}
+	
+	var maxIndex = E.maxlen - 1;
+	for(var i = maxIndex; i > -1; i--){
+		if(E.numArray[i] == varr[i]){continue;}
+		maxIndex = i;break;
+	}
+	if(val > 0){
+		var i = 0;
+		while(i <= maxIndex){
 			var o = $("#" + E.kid + i);
-			var top = parseInt(o.css("marginTop").replace('px', '').replace('-', ''));// 取正
+			o.css("marginTop", "-"+(E.numArray[i]*E.height)+"px");// 复位上
 			var tmp = varr[i];
-			if(top > E.fullHeight){o.css("marginTop", "-"+(top-E.fullHeight)+"px");}// 复位上
-			if(tmp < E.numArray[i]){tmp = tmp+10;}// 滚动到下面的数字
-			o.animate({marginTop:("-"+(tmp*E.height)+"px")}, 300, function(){});
+			if(E.numArray[i] >= tmp){tmp = tmp + 10;}
+			o.animate({marginTop:("-"+(tmp*E.height)+"px")}, E.times * (maxIndex - i), function(){});
+			i = i+1;
 		}
-		i = i+1;
+	}else{
+		var i = maxIndex;
+		while(i >= 0){
+			var o = $("#" + E.kid + i);
+			o.css("marginTop", "-"+((E.numArray[i]+10)*E.height)+"px");// 复位下
+			var tmp = varr[i];
+			if(E.numArray[i] > tmp){tmp = tmp + 10;}
+			o.animate({marginTop:("-"+(tmp*E.height)+"px")}, E.times * (maxIndex - i), function(){});
+			i = i-1;
+		}
 	}
 	E.numArray = varr;
 	E.num = v;
 };
-// 减到指定数字
-$jskey.Numx.prototype.moveDown = function(E, v, varr){
-	var i = E.maxlen - 1;
-	while(i >= 0){
-		if(varr[i] == -1){var o = $("#"+E.kid+i);o.css("marginTop", "0px");varr[i] = 0;
-		}else if(varr[i] == E.numArray[i]){
-		}else{
-			var o = $("#"+E.kid+i);
-			var top = parseInt(o.css("marginTop").replace('px', '').replace('-', ''));// 取正
-			var tmp = varr[i];
-			if(top < E.fullHeight){o.css("marginTop", "-"+(top+E.fullHeight)+"px");}// 复位下
-			if(tmp > E.numArray[i]){tmp = tmp + 10;}// 滚动到上面的数字
-			o.animate({marginTop:("-"+(tmp*E.height)+"px")}, 300, function(){});
-		}
-		i = i-1;
-	}
-	E.numArray = varr;
-	E.num = v;
-};
+
 
 
 $jskey.numx = function(p){
